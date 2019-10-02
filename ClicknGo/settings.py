@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Our Project Apps
     'StorePage.apps.StorepageConfig',
     'Users.apps.UsersConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,4 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
