@@ -25,5 +25,5 @@ urlpatterns = [
     path('', include('StorePage.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='Users/login.html'), name='login'), # handle logins
     path('logout/', auth_views.LogoutView.as_view(template_name='StorePage/_base.html'), name='logout'), # redirect logouts to front page
-    path('', include('Users.urls')),
+    path('', include('Users.urls', namespace='profile_settings')), # Users/Profile urls
 ]
