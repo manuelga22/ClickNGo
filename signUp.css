@@ -1,0 +1,17 @@
+.signUp{
+  border: orange solid 5px;
+  width: 50%;
+ 
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+  padding: 20px;
+  border-radius: 5px;
+
+}
+.signUp h1{
+  text-align:center;
+}
+.signUp input{
+  text-align:center;
+}
