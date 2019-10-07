@@ -4,13 +4,10 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile 
 
-# Create your views here.
-<<<<<<< HEAD
-def login(request):
-  return render(request,'User/login.html',{})
-=======
 
-#Sign-up form
+from django.contrib.auth.models import User;
+
+
 def signup(request):
     if request.method == 'POST':
         form = UserSignUpForm(request.POST)
@@ -39,4 +36,11 @@ def accountSettings(request):
         return render(request, 'Users/accountSettings.html', {'username_form': username_form})
 
 
->>>>>>> b2de61dc1213f4aa763dcfeeac02dbd2ffcb482c
+@login_required
+def deleteAccount(request,pk):
+    userObj=User.objects.get(pk=pk)
+    userObj.delete()
+    return redirect('/')
+       
+
+
