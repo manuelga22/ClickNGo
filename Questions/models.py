@@ -6,3 +6,9 @@ class Question(models.Model):
     User = models.ForeignKey(User, on_delete=models.CASCADE)
     Title = models.CharField(max_length=256)
     QuestionField = models.CharField(max_length=10000)
+    
+    class Meta:
+      verbose_name_plural = "Questions"
+
+    def __str__(self):
+        return self.Title
