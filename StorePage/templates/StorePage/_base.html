@@ -59,7 +59,9 @@
       <main role="main" style="margin-right: 30px; margin-left: 30px;">
 
         {% block body %} {% endblock %}
-    
+        <form action="{% url 'search_results' %}" method="get">
+          <input name="q" type="text" placeholder="Search...">
+        </form>
       </main>
 </body>
 </html>

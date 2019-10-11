@@ -1,0 +1,14 @@
+
+<h1>Search Results</h1>
+
+<h1>asdfg</h1>
+
+<h1>Search Results</h1>
+
+<ul>
+  {% for question in object_list %}
+    <li>
+      {{ question.Title }}, {{ question.QuestionField }}
+    </li>
+  {% endfor %}
+</ul>
