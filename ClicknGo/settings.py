@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Our Project Apps
     'StorePage.apps.StorepageConfig',
     'Users.apps.UsersConfig',
+    'Questions.apps.QuestionsConfig',
     'crispy_forms',
 ]
 
