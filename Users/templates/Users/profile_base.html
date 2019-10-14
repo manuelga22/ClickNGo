@@ -51,6 +51,12 @@ Licensed under MIT
 							<i class="glyphicon glyphicon-flag"></i>
 							Help </a>
 						</li>
+						<li>
+				   	<a href="{% url 'profile_settings:delete_user' user.pk %}">
+						<button type="button" class="btn bg-danger text-light text-center">
+						Delete Account </button>
+						</a>
+						</li>
 					</ul>
 				</div>
 				<!-- END MENU -->
@@ -61,6 +67,7 @@ Licensed under MIT
                 {% block profile %} {% endblock %}
             </div>
 		</div>
+	
 	</div>
 </div>
 {% endblock %}

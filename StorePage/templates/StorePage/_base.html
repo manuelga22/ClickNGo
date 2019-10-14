@@ -5,8 +5,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-
-
 <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 <script src="{% static 'js/js.js' %}" type="text/javascript"></script>
 
@@ -56,12 +54,14 @@
         </div>
       </nav>
 
-      <main role="main" style="margin-right: 30px; margin-left: 30px;">
-
+      <div class="mw-75">
         {% block body %} {% endblock %}
         <form action="{% url 'search_results' %}" method="get">
           <input name="q" type="text" placeholder="Search...">
         </form>
-      </main>
+      
+        <button class = "btn btn-primary" href="{% url 'createQuestion' %}" id="createQuestion"> Create a Question </button>
+      </div>
+    </main>
 </body>
 </html>
