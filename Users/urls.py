@@ -18,6 +18,6 @@ urlpatterns = [
     path('UpdateAvatar/', views.changeAvatar, name='change_avatar'),
 
     # social auth
-     path('', include('social_django.urls', namespace='social')),
+    url('^api/v1/', include('social_django.urls', namespace='social'))
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
