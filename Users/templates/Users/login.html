@@ -11,7 +11,7 @@
 
 
 </head>
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -64,6 +64,9 @@
                            </div>
                             -->
                            <div class="form-group">
+                                 <a class="btn btn-primary" href="{% url 'profile_settings:social:begin' 'google-oauth2' %}">
+                                       Login with google
+                                     </a>
                               <p class="text-center">Don't have account? <a href="{% url 'profile_settings:signup_page' %}" id="signup">Sign up here</a></p>
                            </div>
                            <div class="col-md-12 ">
