@@ -27,11 +27,11 @@
                                 <h1 >Signup</h1>
                              </div>
                           </div>
-                          <form method="POST" name="registration">
+                          <form method="POST" name="newUser">
                               {% csrf_token %}
-                              {{ form | crispy }}
+                              {{form| crispy }}
                              <div class="col-md-12 text-center mb-3">
-                                <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Sign up</button>
+                              <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Sign up</button>
                              </div>
                              <div class="col-md-12 ">
                                 <div class="form-group">

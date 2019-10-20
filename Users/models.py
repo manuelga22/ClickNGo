@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-#from PIL import Image FIXME: Add profile picutres
+
 
 # Create your models here.
 class ProfileManager(models.Manager):
