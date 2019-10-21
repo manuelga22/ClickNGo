@@ -23,9 +23,9 @@
                 <input type="radio" name="options" id="option5" autocomplete="off"> English
               </label>
           </div>
-      <form>
+      <form action="{% url 'search_results' %}" method="get">
         <span class="fa fa-search form-control-feedback"></span>
-        <input type="text" class="form-control searchBar" placeholder="Search Questions">
+        <input name="q" type="text" class="form-control searchBar" placeholder="Search Questions">
       </form>
     </div>
 

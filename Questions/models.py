@@ -11,4 +11,4 @@ class Question(models.Model):
       verbose_name_plural = "Questions"
 
     def __str__(self):
-        return self.Title
+        return self.Question

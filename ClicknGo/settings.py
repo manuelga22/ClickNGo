@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Our Project Apps
     'StorePage.apps.StorepageConfig',
+    'Questions.apps.QuestionsConfig',
     'Users.apps.UsersConfig',
     'crispy_forms',
     'social_django'
