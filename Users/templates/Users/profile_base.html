@@ -2,9 +2,6 @@
 {% load static %}
 {% block body %}
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <!--
@@ -63,16 +60,15 @@ Licensed under MIT
 				<!-- END MENU -->
 			</div>
 		</div>
-		<div class="col-md-9">
-            <div class="profile-content">
-                {% block profile %} {% endblock %}
-            </div>
-		</div>
-	
-	</div>
+		 <div class="col-md-9"> 
+            <div class="profile-content"> 
+								{% block profile %} 
+								{% endblock %}
+          </div>
+   	</div>
 </div>
 
-<!-- ----Delete Modal -------- -->
+<!-- ---- Modal -------- -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -93,12 +89,10 @@ Licensed under MIT
 	</div>
 </div>
 
-
-
-
    <style>
 		.modal-backdrop{
 			z-index:-1;
 		 }
 	 </style>
+	 
 {% endblock %}

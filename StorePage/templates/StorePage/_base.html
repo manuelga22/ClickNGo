@@ -1,33 +1,25 @@
 {% load static from staticfiles %}
 <!DOCTYPE html>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <!------ Include the above in your HEAD tag ---------->
-
-
-
 <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 <script src="{% static 'js/js.js' %}" type="text/javascript"></script>
-
 <html lang="en">
 <head>
   <title>Web-Dev</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,500i,700,800i" rel="stylesheet">
+  
 </head>
   <body>
-
     <nav class="navbar navbar-expand-sm nav-color  ">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
               <span class="navbar-brand mb-0 h1 ">SparkDev</span>
@@ -39,12 +31,6 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
               Settings
             </a>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'profile_settings:profile_page' %}">Profile</a>              
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-            </li>
             <div class="dropdown-menu sm-menu">
               {% if user.is_superuser %}
               <a class="dropdown-item" href="/admin/">Admin</a>
@@ -56,6 +42,21 @@
             {% endif %}
             </div>
           </li>
+          </ul>
+          <!--<<<<<<<<<<DropDown>>>>>> -->
+            {% if user.is_authenticated %}
+              <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle dropdownMenu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{user.username}}<span class="sr-only"></span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="nav-link dropdown-item" href="{% url 'profile_settings:profile_page' %}">Profile</a> 
+                    <a class="nav-link dropdown-item" href="#">Post a Question!</a>
+                    <a class="nav-link dropdown-item" href="{% url 'logout' %}">Logout</a>
+                  </div>
+                </div>
+            <!--<<<<<<< End of Dropdown>>>>>> -->
+          {% endif %}
         </div>
       </nav>
 
@@ -65,12 +66,13 @@
    
 
 </body>
+<!-- <<<<<<<<<<footer>>>>>> -->
 <footer class="page-footer font-small blue pt-4">
     <div class="container-fluid text-center text-md-left">
       <div class="row">
         <div class="col-md-6 mt-md-0 mt-3">
-          <h5 class="text-uppercase">Footer Content</h5>
-          <p>Here you can use rows and columns to organize your footer content.</p>
+          <h5 class="text-uppercase">Sparkdev Web Development Project 2019</h5>
+          <p>Spardev Overflow</p>
         </div>
         <hr class="clearfix w-100 d-md-none pb-3">
         <div class="col-md-3 mb-md-0 mb-3">
@@ -79,39 +81,18 @@
             <li>
               <a href="#!">Link 1</a>
             </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
           </ul>
-  
         </div>
         <div class="col-md-3 mb-md-0 mb-3">
           <h5 class="text-uppercase">Links</h5> 
           <ul class="list-unstyled">
             <li>
               <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
+            </li>    
           </ul>
-  
         </div>
       </div> 
     </div>  
-  
   </footer>
 <style>
   footer {   
@@ -125,7 +106,6 @@
  border-top: solid black 5px;
  padding: 0px !important;
   }
-
     main{
       height:100%;
       display:flex;
@@ -151,7 +131,9 @@
     html, body {
     height: 90vh;
    }
-
-  
+   .dropdownMenu{
+     width:15vw;
+   }
   </style>
+
 </html>
