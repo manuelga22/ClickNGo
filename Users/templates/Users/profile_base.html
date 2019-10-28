@@ -81,8 +81,11 @@ Licensed under MIT
 					Are you sure?
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                             
-					<a href="{% url 'profile_settings:delete_user' user.pk %}"><button type="submit" class="btn btn-primary">YES!</button></a>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>   
+					<form method="POST" action="{% url 'profile_settings:delete_user' user.pk %}">
+							{% csrf_token %}                         
+					<button type="submit" class="btn btn-primary">YES!</button>
+				  </form> 
 				</div>
 			</div>
 		</div>
