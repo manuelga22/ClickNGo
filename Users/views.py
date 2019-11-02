@@ -24,6 +24,12 @@ def signup(request):
         form = UserSignUpForm()
         return render(request, 'Users/signup.html', {'form': form})
 
+def changePassword(request):
+    if request.method == "POST":
+        print('changing password ')
+    else:
+       return render(request, 'Users/forgotPassword.html', {'form': form}) 
+
 # Profile Page
 @login_required
 def displayProfile(request):
@@ -56,7 +62,7 @@ def accountSettings(request):
 def deleteAccount(request,pk):
     userObj=User.objects.get(pk=pk)
     userObj.delete()
-    messages.success(request, 'Profile has been deleted!, See ya')
+    messages.success(request, 'Profile has been deleted. See ya!')
     return redirect('/')
  
 
