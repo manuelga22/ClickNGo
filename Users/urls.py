@@ -16,7 +16,7 @@ urlpatterns = [
     path('Account/', views.accountSettings, name='account_settings'),
     path('DeleteAccount/<int:pk>/', views.deleteAccount, name='delete_user'),
     path('UpdateAvatar/', views.changeAvatar, name='change_avatar'),
-    path('ChangePassword/', views.changePassword, name="change_password" )
+    path('ChangePassword/', views.changePassword, name="change_password" ),
     # social auth
     url('^api/v1/', include('social_django.urls', namespace='social'))
 
