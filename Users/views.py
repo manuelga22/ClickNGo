@@ -7,9 +7,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from .models import Profile 
 from django.core.mail import send_mail
 from django.http import HttpResponse
-
 from django.contrib.auth.models import User
-
 from django.contrib import messages
 
 
@@ -37,7 +35,6 @@ def changePassword(request):
     except:
       messages.warning(request, "Couldn't find an user with those credentials")
       return HttpResponseRedirect(request.path_info)
-
     return redirect('/')
   else:
     form=  EnterEmailForm()
@@ -47,11 +44,9 @@ def resetPassword(request,pk):
     if request.method == "POST":
        userObj = User.objects.get(pk=pk)
        form= ResetPasswordForm(request.POST, instance= userObj)
-
        if form.data['password']==form.data['passwordCheck']:#check if passwords matched
         if form.is_valid():
            form.save()
-
            if(len(form.data['password']) >8 and not(form.data['password'].isdigit())  ):#conditions for the new passwords
               userObj.set_password(form.data['password'])
               userObj.save()
@@ -60,11 +55,9 @@ def resetPassword(request,pk):
            else:
               messages.warning(request," Make sure your password contains more than 9 characters and is not only numbers")
               return HttpResponseRedirect(request.path_info)
-
        else:#if passwords didn't match
          messages.warning(request, "Passwords don't match")
          return HttpResponseRedirect(request.path_info)
-
     else:
        userObj = User.objects.get(pk=pk)
        form= ResetPasswordForm()
