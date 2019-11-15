@@ -8,14 +8,14 @@ class ProfileManager(models.Manager):
         profile = self.create(User=User, profilePic=profilePic)
         profile.save()
         return profile
-
 class Profile(models.Model):
     User = models.OneToOneField(User, on_delete=models.CASCADE)
     profilePic = models.ImageField(null=True, upload_to='media')
     objects = ProfileManager()
     
-    def __String__(self):
-        return self
+    def __str__(self):
+        return str(self.User)
+    
 
 
 
