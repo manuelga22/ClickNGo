@@ -1,0 +1,20 @@
+{% extends "StorePage/_base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/response.css' %}">
+
+<div class="ResponseContainer">
+    <h1> Question Asked </h1>
+        <h3>{{Question.Question}}</h2>
+            <body>{{Question.Description}}</body>
+    
+    <h1> Leave a Reply </h1>
+    <form class="createForm" method="POST" name= "createResponse">
+        {% csrf_token %}
+        {{form| crispy }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

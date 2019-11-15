@@ -12,8 +12,10 @@ class Profile(models.Model):
     User = models.OneToOneField(User, on_delete=models.CASCADE)
     profilePic = models.ImageField(null=True, upload_to='media')
     objects = ProfileManager()
+    
     def __String__(self):
-        return self
+        return str(self.User)
+    
 
 
 

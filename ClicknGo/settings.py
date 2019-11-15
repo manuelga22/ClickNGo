@@ -40,10 +40,11 @@ INSTALLED_APPS = [
 
     # Our Project Apps
     'StorePage.apps.StorepageConfig',
-    'Questions.apps.QuestionsConfig',
     'Users.apps.UsersConfig',
+    'Questions.apps.QuestionsConfig', # this is questions config
+    'Communities.apps.CommunitiesConfig',
     'crispy_forms',
-    'social_django'
+    'social_django',
 ]
 
 MIDDLEWARE = [

@@ -1,21 +1,15 @@
 {% extends "StorePage/_base.html" %}
 {% block body%}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/results.css' %}">
 
-<div class="resultsContainer">
+
 <h1>Search Results</h1>
 
-
+<ul>
   {% for question in object_list %}
-    <a href="" name= "{{ question.id }}" ><div class="resultCard">
-      <b>{{ question.Question }}</b>
-      <div class="questionPreview">
-        {{ question.Description }}
-      </div>
-    </div></a>
+    <li>
+      {{ question.Question }}, {{ question.Description }}
+    </li>
   {% endfor %}
-
+</ul>
 
 {% endblock %}
-</div>
