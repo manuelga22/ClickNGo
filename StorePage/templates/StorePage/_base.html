@@ -1,9 +1,13 @@
-{% load static %}
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <!------ Include the above in your HEAD tag ---------->
+
+
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
 <script src="{% static 'js/js.js' %}" type="text/javascript"></script>
@@ -19,13 +23,14 @@
 </head>
   <body>
 
-    <nav class="navbar navbar-expand-sm   navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm nav-color  ">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <span class="navbar-brand mb-0 h1 ">SparkDev</span>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'front_page' %}">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -54,9 +59,107 @@
         </div>
       </nav>
 
-      <div class="mw-75">
+      <main role="main" style="margin-right: 30px; margin-left: 30px;">
         {% block body %} {% endblock %}
-        <button class = "btn btn-primary" href="{% url 'createQuestion' %}" id="createQuestion"> Create a Question </button>
-      </div>
+      </main>
+   
+
 </body>
+<footer class="page-footer font-small blue pt-4">
+    <div class="container-fluid text-center text-md-left">
+      <div class="row">
+        <div class="col-md-6 mt-md-0 mt-3">
+          <h5 class="text-uppercase">Footer Content</h5>
+          <p>Here you can use rows and columns to organize your footer content.</p>
+        </div>
+        <hr class="clearfix w-100 d-md-none pb-3">
+        <div class="col-md-3 mb-md-0 mb-3">
+          <h5 class="text-uppercase">Links</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+  
+        </div>
+        <div class="col-md-3 mb-md-0 mb-3">
+          <h5 class="text-uppercase">Links</h5> 
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+  
+        </div>
+      </div> 
+    </div>  
+  
+  </footer>
+<style>
+  footer {   
+    top:20%; 
+  clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -150px;
+ margin-bottom: 0px !important;
+ background-color:lightcyan;
+ border-top: solid black 5px;
+ padding: 0px !important;
+  }
+
+    main{
+      height:100%;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-image: url('/static/background3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0px !important;
+    }
+   .nav-color{
+        background-color: white;
+        color:black;
+        border-bottom: solid black 3px;
+    }
+    nav a{
+      color: black; 
+    }
+    nav span{
+      color: black !important;
+    }
+    html, body {
+    height: 90vh;
+   }
+   .resultsContainer{
+    width:75vw;
+    height:100%;
+    background-color:white;
+    border: solid black 5px;
+    border-top: 0px;
+    border-bottom:0px;
+    text-align:center;
+    overflow: scroll;
+  }
+  </style>
 </html>

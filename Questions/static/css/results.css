@@ -1,0 +1,30 @@
+.resultsContainer{
+    width:65vw;
+    height:75%;
+    background-color:white;
+    border: solid black 5px;
+    text-align:center;
+    overflow: scroll;
+  }
+.resultsContainer a:hover{
+    text-decoration: none;
+}
+.resultCard{
+    margin:auto;
+    height: 15%;
+    width: 95%;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.35);
+    margin-top: 15px;
+    color:black;
+    text-decoration: none;
+}
+.resultCard:hover{
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.8);
+}
+.questionPreview{
+    margin:auto;
+    text-align:center;
+    width:80%;
+    height:60%;
+    overflow: hidden;
+}

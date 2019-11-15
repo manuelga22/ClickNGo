@@ -40,9 +40,10 @@ INSTALLED_APPS = [
 
     # Our Project Apps
     'StorePage.apps.StorepageConfig',
-    'Users.apps.UsersConfig',
     'Questions.apps.QuestionsConfig',
+    'Users.apps.UsersConfig',
     'crispy_forms',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'ClicknGo.urls'
@@ -68,10 +70,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'ClicknGo.wsgi.application'
 
@@ -125,6 +133,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR,'Users/media')
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+LOGIN_URL = '/auth/login/google-oauth2/'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '73320595581-5gutf7drt3i6ai99kntdknj66ui285ks.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'MyqD9gdzdnM-FpSi49SJlzwh'
+
+
+# LOGIN_URL = 'login'
+# LOGOUT_URL = 'logout'
+# LOGIN_REDIRECT_URL = 'index'

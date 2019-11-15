@@ -1,0 +1,68 @@
+{% extends "StorePage/_base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<div class="Home">
+  <h1 class="title">SparkDev Overflow</h1>
+    <div class="form-group has-search search">
+        <div class="btn-group btn-group-toggle centerclass" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option1" autocomplete="off" > Math
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option2" autocomplete="off"> Programming
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" name="options" id="option3" autocomplete="off"> Physics
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option4" autocomplete="off"> Chemistry
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option5" autocomplete="off"> English
+              </label>
+          </div>
+      <form action="{% url 'search_results' %}" method="get">
+        <span class="fa fa-search form-control-feedback"></span>
+        <input name="q" type="text" class="form-control searchBar" placeholder="Search Questions">
+      </form>
+    </div>
+
+</div>
+
+<style>
+.Home{
+  height:50%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width:70%;
+  border: solid black 5px;
+}
+.centerclass{
+  left:20%;
+  margin:30px 0px 30px 0px;
+}
+.form-control-feedback{
+  position:absolute;
+  padding: 12px ;
+}
+.searchBar{
+  padding: 0px 0px 0px 50px;
+}
+.search{
+  width: 70%;
+  
+}
+</style>
+
+
+
+
+
+
+
+{% endblock %}
