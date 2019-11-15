@@ -34,8 +34,10 @@ def changePassword(request):
     try:
       user = User.objects.get(username = userForm.data['username'], email=userForm.data['email'])
       send_mail(subject="Reset Password", message='Go to this link to reset the password: http://localhost:8000/resetPassword/%s'%user.pk,from_email="sparkdevfiuweb@gmail.com", recipient_list=[user.email],fail_silently=False)
-    except user.DoesNotExist:
+    except:
       messages.warning(request, "Couldn't find an user with those credentials")
+      return HttpResponseRedirect(request.path_info)
+
     return redirect('/')
   else:
     form=  EnterEmailForm()
@@ -45,17 +47,24 @@ def resetPassword(request,pk):
     if request.method == "POST":
        userObj = User.objects.get(pk=pk)
        form= ResetPasswordForm(request.POST, instance= userObj)
-       if form.data['password']==form.data['passwordCheck']:
+
+       if form.data['password']==form.data['passwordCheck']:#check if passwords matched
         if form.is_valid():
-           user = form.save()
-           update_session_auth_hash(request, user)
-           messages.success(request,"changed password succesfully")
-           return redirect('/login')
-        else:
-           messages.warning(request,"passwords didn't match or couldn't update password")
-       else:
-           messages.warning(request,"passwords don't match")
-       return HttpResponseRedirect(request.path_info)
+           form.save()
+
+           if(len(form.data['password']) >8 and not(form.data['password'].isdigit())  ):#conditions for the new passwords
+              userObj.set_password(form.data['password'])
+              userObj.save()
+              messages.success(request,"changed password succesfully")
+              return redirect('/login')
+           else:
+              messages.warning(request," Make sure your password contains more than 9 characters and is not only numbers")
+              return HttpResponseRedirect(request.path_info)
+
+       else:#if passwords didn't match
+         messages.warning(request, "Passwords don't match")
+         return HttpResponseRedirect(request.path_info)
+
     else:
        userObj = User.objects.get(pk=pk)
        form= ResetPasswordForm()
