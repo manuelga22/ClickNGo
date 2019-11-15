@@ -40,10 +40,11 @@ INSTALLED_APPS = [
 
     # Our Project Apps
     'StorePage.apps.StorepageConfig',
-    'Questions.apps.QuestionsConfig',
     'Users.apps.UsersConfig',
+    'Communities.apps.CommunitiesConfig',
+    'Chat.apps.ChatConfig',
     'crispy_forms',
-    'social_django'
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -136,7 +137,7 @@ STATIC_URL = '/static/'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT= os.path.join(BASE_DIR,'Users/media')
+MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

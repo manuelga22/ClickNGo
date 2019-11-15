@@ -6,6 +6,8 @@ from .models import Profile
 
 from django.contrib.auth.models import User
 
+from django.contrib import messages
+
 
 def signup(request):
     if request.method == 'POST':
@@ -15,6 +17,9 @@ def signup(request):
             user = User.objects.get(username = newUser.cleaned_data['username'])  #get instance to save a profile
             Profile.objects.create_Profile(user, '/defaultAvatar.png')
             return redirect ('login') 
+        else:
+            messages.warning(request, 'Could not create profile')
+            return HttpResponseRedirect(request.path_info)
     else:
         form = UserSignUpForm()
         return render(request, 'Users/signup.html', {'form': form})
@@ -29,10 +34,12 @@ def displayProfile(request):
 @login_required 
 def accountSettings(request):
     if request.method == 'POST':
-        print('updating>>>>>>>>>>')
         username_form = UsernameChangeForm(request.POST, instance=request.user)
         if username_form.is_valid(): #FIXME: Check username is already taken first before saving
             username_form.save() 
+            return HttpResponseRedirect(request.path_info)
+        else:
+            messages.warning(request, 'Could not update profile')
             return HttpResponseRedirect(request.path_info)
     else:
         username_form = UsernameChangeForm(instance=request.user)
@@ -49,18 +56,23 @@ def accountSettings(request):
 def deleteAccount(request,pk):
     userObj=User.objects.get(pk=pk)
     userObj.delete()
+    messages.success(request, 'Profile has been deleted!, See ya')
     return redirect('/')
+ 
 
 @login_required
 def changeAvatar(request, template_name="Users/accountSettings.html"):
-      print("yooo>>>>>>>")
       if request.method == 'POST':
        profileObj = Profile.objects.get(User= request.user)
        form =  UploadFileForm(request.POST or None, request.FILES or None, instance=profileObj)
        if form.is_valid():
           form.save()
           print("yooo2>>>>>>>")
+          messages.success(request, 'Profile picture has been updated!')
           return redirect('/Account/')
+       else:
+          messages.warning(request, 'Could not update profile')
+          return HttpResponseRedirect(request.path_info)
         
           
   
