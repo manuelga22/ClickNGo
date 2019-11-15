@@ -25,6 +25,18 @@ class UsernameChangeForm(forms.ModelForm):
         model = User
         fields = ['username','email']
 
+class EnterEmailForm(forms.ModelForm):
+    class Meta:
+        model= User
+        fields = ['username','email']
+
+
+class ResetPasswordForm(forms.ModelForm):
+    passwordCheck = forms.CharField(max_length=20)
+    class Meta:
+        model=User
+        fields=['password','passwordCheck']
+
 
 
 
