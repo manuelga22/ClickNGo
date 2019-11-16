@@ -28,4 +28,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='StorePage/_base.html'), name='logout'), # redirect logouts to front page
     path('', include('Users.urls', namespace='profile_settings')), # Users/Profile urls
     path('', include('Questions.urls')), # Questions Urls
+    path('Communities', include('Communities.urls')),
 ]
