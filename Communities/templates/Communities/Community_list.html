@@ -1,0 +1,35 @@
+{% extends "StorePage/_base.html" %}    
+{% block body %}    
+    <!--Cards for each book-->
+    <div class="card-columns">
+        <div id="main">
+            {% for communities in Community %}
+                <div class="item">
+                    <div class="card" style="max-width: 150px;">
+                      <a href="{{ communities.get_absolute_url }}"><img src="{{ communities.Image.url }}" class="card-img-top"></a>
+                      <div class="card-body">
+                          <h5><a class="card-title">{{ communities.Name }}</a></h5>
+                        <p class="card-text">{{ communities.Description }}</p>
+                      </div>
+                        <!--If you wanted to add more to the books listed on the homepage-->
+                        <!--
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Book Price: ${{ book.price }}</li>
+                        <li class="list-group-item">Rating: {{ book.avg_rating }}</li>
+                        <li class="list-group-item">Genre: {{ book.book_genre }}</li>
+                        <li class="list-group-item">Publishing Information: {{ book.publishing_info }}</li>
+                      </ul>
+                      -->
+                        <!--If you wanted to add a quick add to cart/wishlist buttons-->
+                        <!--
+                      <div class="card-footer">
+                            <a class="btn btn-success" href="#" role="button">Add to Cart</a>
+                            <a class="btn btn-primary" href="#" role="button">Add to Wishlist</a>
+                      </div>
+                      -->
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}
