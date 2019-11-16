@@ -7,7 +7,6 @@ from .models import Question, Response
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 
-
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
@@ -20,7 +19,6 @@ class SearchResultsView(ListView):
             Q(Question__icontains=query) | Q(Description__icontains=query)
         )
         return object_list
-
 # Create your views here.
 @login_required
 def createQuestion(request):

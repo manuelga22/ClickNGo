@@ -2,9 +2,6 @@
 {% load static %}
 {% block body %}
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <!--
@@ -20,11 +17,13 @@ Licensed under MIT
 			<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
-					<img src="#" class="img-responsive" alt="">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="{{profile.profilePic.url}}" class="img-responsive" alt="profile-avatar">
 				</div>
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
+		
 					<div class="profile-usertitle-name">
 						{{ user.username }}
 					</div>
@@ -36,24 +35,18 @@ Licensed under MIT
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav">
-						<li class="{% if 'Profile' in request.resolver_match.url_name %} active {% endif %}">
-							<a href="#">
-							<i class="glyphicon glyphicon-home"></i>
-							Overview </a>
 						</li>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<li class="{% if 'Account' in request.resolver_match.url_name %} active {% endif %}">
 							<a href="{% url 'profile_settings:account_settings'%}">
 							<i class="glyphicon glyphicon-user"></i>
 							Account Settings </a>
 						</li>
-						<li>
-							<a href="#">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
 						</li>
 						<li>
-				   	<a href="{% url 'profile_settings:delete_user' user.pk %}">
-						<button type="button" class="btn bg-danger text-light text-center">
+				    <a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn bg-danger text-light text-center" data-toggle="modal" data-target="#deleteModal">
 						Delete Account </button>
 						</a>
 						</li>
@@ -62,12 +55,42 @@ Licensed under MIT
 				<!-- END MENU -->
 			</div>
 		</div>
-		<div class="col-md-9">
-            <div class="profile-content">
-                {% block profile %} {% endblock %}
-            </div>
+		 <div class="col-md-9"> 
+            <div class="profile-content"> 
+								{% block profile %} 
+								{% endblock %}
+          </div>
+   	</div>
+</div>
+
+<!-- ---- Modal -------- -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Are you sure?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>   
+					<form method="POST" action="{% url 'profile_settings:delete_user' user.pk %}">
+							{% csrf_token %}                         
+					<button type="submit" class="btn btn-primary">YES!</button>
+				  </form> 
+				</div>
+			</div>
 		</div>
-	
 	</div>
 </div>
+
+   <style>
+		.modal-backdrop{
+			z-index:-1;
+		 }
+	 </style>
+	 
 {% endblock %}
