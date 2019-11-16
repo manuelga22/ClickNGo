@@ -40,7 +40,7 @@ def allQuestions(request):
     return render(request, 'Questions/allQuestions.html', {'Question': Questions})
 
 def questionDetail(request, title):
-    user = get_object_or_404(Profile, User=request.user)
+    #user = get_object_or_404(Profile, User=request.user)
     #response = Response.objects.all()
     try:
         question = get_object_or_404(Question, Question=title)
