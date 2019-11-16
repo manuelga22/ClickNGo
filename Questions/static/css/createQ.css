@@ -1,0 +1,15 @@
+.createQContainer{
+    width:65%;
+    height:75%;
+    background-color:white;
+    border: solid black 5px;
+    text-align:center;
+  }
+.createQContainer a:hover{
+    text-decoration: none;
+}
+
+.createForm{
+  width:60%; 
+  margin:auto;
+}

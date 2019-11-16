@@ -1,15 +1,16 @@
-.resultsContainer{
-    width:65vw;
+.allQsContainer{
+    width:65%;
     height:75%;
     background-color:white;
     border: solid black 5px;
     text-align:center;
     overflow: scroll;
   }
-.resultsContainer a:hover{
+.allQsContainer a:hover{
     text-decoration: none;
 }
-.resultCard{
+
+.QCard{
     margin:auto;
     height: 15%;
     width: 95%;
@@ -18,7 +19,7 @@
     color:black;
     text-decoration: none;
 }
-.resultCard:hover{
+.QCard:hover{
     box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.8);
 }
 .questionPreview{

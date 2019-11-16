@@ -1,1 +1,21 @@
 {% extends "StorePage/_base.html" %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/createQ.css' %}">
+
+<div class="createQContainer">
+    <h1> Ask a Question </h1>
+
+    <form class="createForm" method="POST" name= "createQuestion">
+        {% csrf_token %}
+
+        {{form| crispy }}
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% endblock %}
+
+</div>

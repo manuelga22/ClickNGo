@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'StorePage.apps.StorepageConfig',
     'Users.apps.UsersConfig',
     'Communities.apps.CommunitiesConfig',
-    'Chat.apps.ChatConfig',
+    'Questions.apps.QuestionsConfig', # this is questions config
     'crispy_forms',
     'social_django',
 ]

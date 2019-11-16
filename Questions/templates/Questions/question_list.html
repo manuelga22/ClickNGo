@@ -1,13 +1,12 @@
 {% extends "StorePage/_base.html" %}
 {% block body%}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/results.css' %}">
 
-<div class="resultsContainer">
+
 <h1>Search Results</h1>
 
-
+<ul>
   {% for question in object_list %}
+<<<<<<< HEAD
 <<<<<<< HEAD
     <a href="" name= "{{ question.id }}" ><div class="resultCard">
       <b>{{ question.Question }}</b>
@@ -20,8 +19,12 @@
       {{ question.Question }}, {{ question.Description }}
     </li>
 >>>>>>> 755750fc3c28a9549eeae4014ddb8defbd87b7bf
+=======
+    <li>
+      {{ question.Question }}, {{ question.Description }}
+    </li>
+>>>>>>> c4aa71058bef52a9bbb55edfe79bec6239f18f5b
   {% endfor %}
-
+</ul>
 
 {% endblock %}
-</div>
