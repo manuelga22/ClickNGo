@@ -17,6 +17,7 @@ Licensed under MIT
 			<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
 				<div class="profile-userpic">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<img src="{{profile.profilePic.url}}" class="img-responsive" alt="profile-avatar">
 				</div>
 				<!-- END SIDEBAR USERPIC -->
@@ -34,23 +35,17 @@ Licensed under MIT
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
 					<ul class="nav">
-						<li class="{% if 'Profile' in request.resolver_match.url_name %} active {% endif %}">
-							<a href="#">
-							<i class="glyphicon glyphicon-home"></i>
-							Overview </a>
 						</li>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<li class="{% if 'Account' in request.resolver_match.url_name %} active {% endif %}">
 							<a href="{% url 'profile_settings:account_settings'%}">
 							<i class="glyphicon glyphicon-user"></i>
 							Account Settings </a>
 						</li>
-						<li>
-							<a href="#">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
 						</li>
 						<li>
 				    <a>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="button" class="btn bg-danger text-light text-center" data-toggle="modal" data-target="#deleteModal">
 						Delete Account </button>
 						</a>

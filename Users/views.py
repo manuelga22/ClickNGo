@@ -10,6 +10,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 
+from django.contrib import messages
+
 
 def signup(request):
     if request.method == 'POST':
@@ -108,6 +110,7 @@ def changeAvatar(request, template_name="Users/accountSettings.html"):
        form =  UploadFileForm(request.POST or None, request.FILES or None, instance=profileObj)
        if form.is_valid():
           form.save()
+          print("yooo2>>>>>>>")
           messages.success(request, 'Profile picture has been updated!')
           return redirect('/Account/')
        else:

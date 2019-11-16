@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     # Our Project Apps
     'StorePage.apps.StorepageConfig',
     'Users.apps.UsersConfig',
+    'Communities.apps.CommunitiesConfig',
+    'Questions.apps.QuestionsConfig', # this is questions config
     'crispy_forms',
-    'social_django'
+    'social_django',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -142,7 +144,7 @@ STATIC_URL = '/static/'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT= os.path.join(BASE_DIR,'Users/media')
+MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
