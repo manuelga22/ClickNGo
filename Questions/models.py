@@ -12,7 +12,7 @@ class Question(models.Model):
       verbose_name_plural = "Questions"
 
     def __str__(self):
-        return self.Question
+        return str(self.Question)
     
     def get_absolute_url(self):
         return reverse('Question:questionDetail', args=[self.Question])
