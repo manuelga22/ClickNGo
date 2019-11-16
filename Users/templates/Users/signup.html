@@ -10,9 +10,7 @@
         
 </head>
 
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 
@@ -21,7 +19,7 @@
           <div class="row">
            <div class="col-md-5 mx-auto">
              <div id="first">
-                 <div class="myform form ">
+                 <div class="myform form Sign-upForm ">
                           <div class="logo mb-3">
                              <div class="col-md-20 text-center">
                                 <h1 >Signup</h1>
@@ -78,3 +76,33 @@
 
         </div>    
   </body>
+  <style>
+      body{
+         background: rgb(122,2,113);
+         background: linear-gradient(158deg, rgba(122,2,113,1) 8%, rgba(255,192,76,1) 71%);
+      }
+      .Sign-upForm{
+         color:white;
+         border:solid #FFC04C 3px;
+         background:rgba(169,169,169, 0.6)
+      }
+      .socialOuth{
+         display:block;
+         text-align:center;
+         color:black;
+      }
+      .socialOuth, button {
+         background: #FFC04C !important;
+         border:none !important;
+      }
+      p, button, span,li{
+         color:white !important;
+      }
+      .text-muted{
+         color:white !important;
+      }
+      span{
+         background: none !important;
+      }
+      
+      </style>

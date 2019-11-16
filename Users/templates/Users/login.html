@@ -24,7 +24,7 @@
         <div class="row">
 			<div class="col-md-5 mx-auto">
 			<div id="first">
-				<div class="myform form ">
+				<div class="myform form log-inForm">
 					 <div class="logo mb-3">
 						 <div class="col-md-12 text-center">
 							<h1>Login</h1>
@@ -64,15 +64,17 @@
                            </div>
                             -->
                            <div class="form-group">
-                                 <a class="btn btn-primary" href="{% url 'profile_settings:social:begin' 'google-oauth2' %}">
+                                 <a class="btn btn-primary socialOuth"  href="{% url 'profile_settings:social:begin' 'google-oauth2' %}">
                                        Login with google
-                                     </a>
+                                 </a>
                               <p class="text-center">Don't have account? <a href="{% url 'profile_settings:signup_page' %}" id="signup">Sign up here</a></p>
+                              <p class="text-center"><a href="{% url 'profile_settings:change_password' %}">Forgot Password?</a></p>
                            </div>
                            <div class="col-md-12 ">
                                  <div class="form-group">
                                     <p class="text-center"><a href="{% url 'front_page' %}" id="front_page">Back to Home Page.</a></p>
                                  </div>
+                              </div>
                         </form>
                  
 				</div>
@@ -82,3 +84,30 @@
       </div>   
          
 </body>
+<style>
+body{
+   background: rgb(122,2,113);
+   background: linear-gradient(158deg, rgba(122,2,113,1) 8%, rgba(255,192,76,1) 71%);
+}
+.log-inForm{
+   color:white;
+   border:solid #FFC04C 3px;
+   background:rgba(169,169,169, 0.6)
+}
+.socialOuth{
+   display:block;
+   text-align:center;
+   color:black;
+}
+.socialOuth, button {
+   background: #FFC04C !important;
+   border:none !important;
+}
+p, button, span{
+   color:white !important;
+}
+span{
+   background: none !important;
+}
+
+</style>

@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UserSignUpForm, UsernameChangeForm, ProfileCreateForm, UploadFileForm
-from django.http import HttpResponseRedirect
+from .forms import UserSignUpForm, UsernameChangeForm, ProfileCreateForm, UploadFileForm, EnterEmailForm,ResetPasswordForm
+from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import Profile 
-
+from django.core.mail import send_mail
+from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 from django.contrib import messages
 
@@ -23,6 +27,45 @@ def signup(request):
     else:
         form = UserSignUpForm()
         return render(request, 'Users/signup.html', {'form': form})
+
+def changePassword(request):
+  if request.method == "POST":
+    userForm = EnterEmailForm(request.POST)
+    try:
+      user = User.objects.get(username = userForm.data['username'], email=userForm.data['email'])
+      send_mail(subject="Reset Password", message='Go to this link to reset the password: http://localhost:8000/resetPassword/%s'%user.pk,from_email="sparkdevfiuweb@gmail.com", recipient_list=[user.email],fail_silently=False)
+    except:
+      messages.warning(request, "Couldn't find an user with those credentials")
+      return HttpResponseRedirect(request.path_info)
+    return redirect('/')
+  else:
+    form=  EnterEmailForm()
+    return render(request, 'Users/forgotPassword.html', {'form': form}) 
+
+def resetPassword(request,pk):
+    if request.method == "POST":
+       userObj = User.objects.get(pk=pk)
+       form= ResetPasswordForm(request.POST, instance= userObj)
+       if form.data['password']==form.data['passwordCheck']:#check if passwords matched
+        if form.is_valid():
+           form.save()
+           if(len(form.data['password']) >8 and not(form.data['password'].isdigit())  ):#conditions for the new passwords
+              userObj.set_password(form.data['password'])
+              userObj.save()
+              messages.success(request,"changed password succesfully")
+              return redirect('/login')
+           else:
+              messages.warning(request," Make sure your password contains more than 9 characters and is not only numbers")
+              return HttpResponseRedirect(request.path_info)
+       else:#if passwords didn't match
+         messages.warning(request, "Passwords don't match")
+         return HttpResponseRedirect(request.path_info)
+    else:
+       userObj = User.objects.get(pk=pk)
+       form= ResetPasswordForm()
+       return render(request, 'Users/resetPassword.html', {'form': form,'user':userObj}) 
+
+
 
 # Profile Page
 @login_required
@@ -56,7 +99,7 @@ def accountSettings(request):
 def deleteAccount(request,pk):
     userObj=User.objects.get(pk=pk)
     userObj.delete()
-    messages.success(request, 'Profile has been deleted!, See ya')
+    messages.success(request, 'Profile has been deleted. See ya!')
     return redirect('/')
  
 

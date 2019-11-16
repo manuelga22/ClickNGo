@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # Our Project Apps
     'StorePage.apps.StorepageConfig',
     'Users.apps.UsersConfig',
@@ -46,6 +45,17 @@ INSTALLED_APPS = [
     'crispy_forms',
     'social_django',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY='1070715211380-9kua6jjm76enp1fuod3epu6ihlegfrl7.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '0_g99OEIZ8prTfAOUMvU31lp'
+
+SOCIAL_AUTH__KEY='sparkdevproject'
+SOCIAL_AUTH__SECRET='SECRET'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,16 +81,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.backends',  
                 'social_django.context_processors.login_redirect',
+                
             ],
         },
     },
 ]
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-)
 
 WSGI_APPLICATION = 'ClicknGo.wsgi.application'
 
@@ -143,12 +150,17 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
-LOGIN_URL = '/auth/login/google-oauth2/'
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '73320595581-5gutf7drt3i6ai99kntdknj66ui285ks.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'MyqD9gdzdnM-FpSi49SJlzwh'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST =  'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'sparkdevfiuweb@gmail.com'
+EMAIL_HOST_PASSWORD = 'Milva1985'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 
 
+#465
 # LOGIN_URL = 'login'
 # LOGOUT_URL = 'logout'
 # LOGIN_REDIRECT_URL = 'index'
