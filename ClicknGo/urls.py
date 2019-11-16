@@ -27,10 +27,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='Users/login.html'), name='login'), # handle logins
     path('logout/', auth_views.LogoutView.as_view(template_name='StorePage/_base.html'), name='logout'), # redirect logouts to front page
     path('', include('Users.urls', namespace='profile_settings')), # Users/Profile urls
-<<<<<<< HEAD
-    path('Communities/', include('Communities.urls')), # Communities urls
-=======
     path('', include('Questions.urls')), # Questions Urls
     path('Communities', include('Communities.urls')),
->>>>>>> c4aa71058bef52a9bbb55edfe79bec6239f18f5b
 ]
