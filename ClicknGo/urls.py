@@ -29,4 +29,6 @@ urlpatterns = [
     path('', include('Users.urls', namespace='profile_settings')), # Users/Profile urls
     path('', include('Questions.urls')), # Questions Urls
     path('Communities', include('Communities.urls')),
+    path('', include('social_django.urls', namespace='social'))
+
 ]
