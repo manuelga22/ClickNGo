@@ -3,5 +3,5 @@ from django.contrib.auth.models import User
 # from .models import Profile 
 # Create your views here.
 def index(request):
-    User = request.user
-    return render(request, 'StorePage/home_page.html', {'user':User})
+    # User = request.user
+    return render(request, 'StorePage/home_page.html', {})

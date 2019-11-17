@@ -17,7 +17,7 @@ class SearchResultsView(ListView):
     def get_queryset(self): # new
         query = self.request.GET.get('q')
         object_list = Question.objects.filter(
-            Q(Question__icontains=query) | Q(Description__icontains=query)
+            Q(Question__icontains=query) | Q(Description__icontains=query) | Q(Subject__icontains=query)
         )
         return object_list
 # Create your views here.

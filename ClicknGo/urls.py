@@ -30,5 +30,4 @@ urlpatterns = [
     path('', include('Questions.urls')), # Questions Urls
     path('Communities', include('Communities.urls')),
     path('', include('social_django.urls', namespace='social'))
-
 ]
