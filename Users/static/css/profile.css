@@ -28,7 +28,7 @@ body {
     -moz-border-radius: 50% !important;
     border-radius: 50% !important;
   }
-  
+ 
   .profile-usertitle {
     text-align: center;
     margin-top: 20px;
@@ -105,9 +105,9 @@ body {
     margin-left: -2px;
   }
   
-  /* Profile Content */
+  
   .profile-content {
     padding: 20px;
     background: #fff;
     min-height: 460px;
-  }
+  } 
