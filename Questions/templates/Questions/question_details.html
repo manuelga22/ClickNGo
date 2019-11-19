@@ -4,17 +4,41 @@
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/response.css' %}">
 
-<div class="ResponseContainer">
-    <h1> Question Asked </h1>
-        <h3>{{Question.Question}}</h2>
-            <body>{{Question.Description}}</body>
-    
-    <h1> Leave a Reply </h1>
-    <form class="createForm" method="POST" name= "createResponse">
-        {% csrf_token %}
-        {{form| crispy }}
-        <input type="submit" value="Submit">
-    </form>
-</div>
+<div class="allContainer">              
+    <!-- User info for Question asked --> 
+    <!-- its recognizing it as an image but broken -->      
+    {% if Question.User.profilePic %}
+        <img class="img" src="{{ Question.User.profilePic.url }}" width="75" height="75"><br>
+        {{Question.User}}
+        {{Question.Created_on}}
+    {% else %}         
+        {{Question.User}}
+        {{Question.Created_on}}
+    {% endif %}
 
+    <div class="QCard">
+    <!-- Question asked-->
+        <b>{{Question.Question}}</b>
+        <div class="questionPreview">
+            {{Question.Description}}
+        </div>
+    </div>  
+    <hr>
+    <!-- Responses to question if any-->
+        {% for r in Response %}
+        <div class="QCard">
+            <b>{{r.User}}</b><br>
+            {{r.Response}}
+        </div>
+        {% endfor %}
+    <br>
+    <!-- form to respond if they are logged in-->
+    {% if user.is_authenticated %}  
+        <form class="createForm" method="POST" name= "createResponse">
+            {% csrf_token %}
+            {{form| crispy }}
+            <input type="submit" value="Submit">
+        </form>
+    {% endif %}
+</div>
 {% endblock %}
