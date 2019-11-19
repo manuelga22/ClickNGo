@@ -1,15 +1,59 @@
-.ResponseContainer{
-    width:65%;
-    height:75%;
-    background-color:white;
-    border: solid black 5px;
-    text-align:center;
-  }
-.ResponseContainer a:hover{
-    text-decoration: none;
+.allContainer{
+  width:65%;
+  height:75%;
+  background-color:white;
+  border: solid black 5px;
+  text-align:center;
+  overflow: scroll;
+}
+.allContainer a:hover{
+  text-decoration: none;
+}
+
+.QCard{
+  margin:auto;
+  height: 15%;
+  width: 95%;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.35);
+  margin-top: 15px;
+  color:black;
+  text-decoration: none;
+}
+
+.questionPreview{
+  margin:auto;
+  text-align:center;
+  width:80%;
+  height:60%;
+  overflow: hidden;
 }
 
 .createForm{
-    width:60%; 
-    margin:auto;
+  width:60%; 
+  margin:auto;
+}
+
+  .img {
+    border-radius: 50%;
   }
+
+.QuestionContainer{
+    width:65%;
+    height:50%;
+    background-color:white;
+    border: solid black 5px;
+    text-align:left;
+    margin-top: 15px;
+}
+
+.userCard{
+    float: left;
+    margin:auto;
+    height: 15%;
+    width: 25%;
+    margin-top: 15px;
+    margin-left: 15px;
+    color:black;
+    text-decoration: none;
+    text-align:center;
+}
