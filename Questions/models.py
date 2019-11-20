@@ -2,12 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from Users.models import Profile
 from django.urls import reverse
+from datetime import datetime   
 
 # Create your models here.
 class Question(models.Model):
     User = models.ForeignKey(Profile, on_delete=models.CASCADE)
     Question = models.CharField(max_length=256)
     Description = models.CharField(max_length=10000)
+    Created_on = models.DateField(default=datetime.now) 
     class Meta:
       verbose_name_plural = "Questions"
 
