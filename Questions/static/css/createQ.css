@@ -1,15 +1,19 @@
 .createQContainer{
-    width:65%;
-    height:75%;
-    background-color:white;
-    border: solid black 5px;
+    width:75%;
+    padding:3%;
+    
+    background-color:white;  
     text-align:center;
+    border:solid #FFC04C 3px;
+    background:rgba(169,169,169, 0.6);
+    border-radius: 10px;
   }
 .createQContainer a:hover{
     text-decoration: none;
 }
 
 .createForm{
-  width:60%; 
+  /* width:60%;  */
   margin:auto;
 }
+

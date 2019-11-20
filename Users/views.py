@@ -48,8 +48,8 @@ def resetPassword(request,pk):
        form= ResetPasswordForm(request.POST, instance= userObj)
        if form.data['password']==form.data['passwordCheck']:#check if passwords matched
         if form.is_valid():
-           form.save()
            if(len(form.data['password']) >8 and not(form.data['password'].isdigit())  ):#conditions for the new passwords
+              form.save()
               userObj.set_password(form.data['password'])
               userObj.save()
               messages.success(request,"changed password succesfully")

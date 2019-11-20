@@ -6,24 +6,19 @@
 
 <ul>
   {% for question in object_list %}
-<<<<<<< HEAD
-<<<<<<< HEAD
     <a href="" name= "{{ question.id }}" ><div class="resultCard">
       <b>{{ question.Question }}</b>
       <div class="questionPreview">
         {{ question.Description }}
       </div>
     </div></a>
-=======
     <li>
       {{ question.Question }}, {{ question.Description }}
     </li>
->>>>>>> 755750fc3c28a9549eeae4014ddb8defbd87b7bf
-=======
+
     <li>
       {{ question.Question }}, {{ question.Description }}
     </li>
->>>>>>> c4aa71058bef52a9bbb55edfe79bec6239f18f5b
   {% endfor %}
 </ul>
 
