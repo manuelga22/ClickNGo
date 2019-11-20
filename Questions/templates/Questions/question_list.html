@@ -1,25 +1,23 @@
 {% extends "StorePage/_base.html" %}
-{% block body%}
+{% load crispy_forms_tags %}
+{% load static %} 
 
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/allQuestions.css' %}">
 
-<h1>Search Results</h1>
+<div class="allQsContainer">
+    <h1>Search Results</h1>
 
-<ul>
-  {% for question in object_list %}
-    <a href="" name= "{{ question.id }}" ><div class="resultCard">
-      <b>{{ question.Question }}</b>
-      <div class="questionPreview">
-        {{ question.Description }}
-      </div>
-    </div></a>
-    <li>
-      {{ question.Question }}, {{ question.Description }}
-    </li>
-
-    <li>
-      {{ question.Question }}, {{ question.Description }}
-    </li>
-  {% endfor %}
-</ul>
+        {% for questions in object_list %}
+            <a href= "{{ questions.get_absolute_url }}"> 
+                <div class="QCard">
+                    <b> {{questions.Question}} </b>
+                    <div class="questionPreview">
+                        {{questions.Description}}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+</div>
 
 {% endblock %}
