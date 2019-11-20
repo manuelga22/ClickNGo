@@ -43,8 +43,8 @@
                 <input type="radio" name="options" id="option5" autocomplete="off"> English
               </label>
           </div> -->
-      <form class="form-inline">
-          <input class="form-control mr-sm-2 search " type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline" action="{% url 'Question:search_results' %}" method="get">
+          <input name="q" class="form-control mr-sm-2 search " type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-warning my-2 my-sm-0 searchButton" type="submit">Search Questions</button>
       </form>
     </div>
