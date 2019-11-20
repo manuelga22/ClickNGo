@@ -9,11 +9,8 @@ class Question(models.Model):
     User = models.ForeignKey(Profile, on_delete=models.CASCADE)
     Question = models.CharField(max_length=256)
     Description = models.CharField(max_length=10000)
-<<<<<<< HEAD
     Subject = models.CharField(max_length=20)
-=======
     Created_on = models.DateField(default=datetime.now) 
->>>>>>> c21fcf51392d738754064ad102de2cbce43ddb01
     class Meta:
       verbose_name_plural = "Questions"
 
