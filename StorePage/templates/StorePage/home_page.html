@@ -2,10 +2,30 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block body %}
-
-<div class="Home">
+<html>
+  <head>
+      <div class="loader loader--active">
+          <div class="loader__icon">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+              <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+              <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0C22.32,8.481,24.301,9.057,26.013,10.047z"></path>
+              <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+            </svg>
+          </div>
+          <div class="loader__tile"></div>
+          <div class="loader__tile"></div>
+          <div class="loader__tile"></div>
+          <div class="loader__tile"></div>
+          <div class="loader__tile"></div>
+        </div>
+        <div class="">
+             <img class="big-logo shadow-lg" src = "/media/logo.png">
+        </div>
+  </head>
+  <body>
+  <div class="Home">
   <h1 class="title">SparkDev Overflow</h1>
-    <div class="form-group has-search search">
+    <!-- <div class="form-group has-search search">
         <div class="btn-group btn-group-toggle centerclass" data-toggle="buttons">
             <label class="btn btn-secondary">
               <input type="radio" name="options" id="option1" autocomplete="off" > Math
@@ -22,10 +42,10 @@
               <label class="btn btn-secondary">
                 <input type="radio" name="options" id="option5" autocomplete="off"> English
               </label>
-          </div>
-      <form class="form-inline" action="{% url 'Question:search_results' %}" method="get">
-          <input name="q" class="form-control mr-sm-2 search " type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0 searchButton" type="submit">Search Questions</button>
+          </div> -->
+      <form class="form-inline">
+          <input class="form-control mr-sm-2 search " type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-warning my-2 my-sm-0 searchButton" type="submit">Search Questions</button>
       </form>
     </div>
 </div>
@@ -56,18 +76,137 @@
      </div>
 
      {% endif %}
-     <!-- end of error/success messages>>>>>> -->
+     <!-- end of error/success messages>>>>>> -->  
+  </body>
+</html>
+  
+
+
 
 <style>
+.big-logo{
+  height: 100%;
+  width: 200px;
+  margin: none;
+  border-radius: 50px;
+}
+body {
+  background-color: #eee;
+}
+.wrapper {
+  height: 100vh;
+  text-align: center;
+}
+.wrapper button {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.loader {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  transition: width 0s 1.4s ease;
+}
+.loader .loader__icon {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+.loader .loader__icon svg {
+  transform-origin: 0 0;
+}
+.loader .loader__tile {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 20%;
+  background-color: #007AE5;
+  transition: width .7s ease;
+}
+.loader .loader__tile:nth-child(0) {
+  top: calc(-1 * 20%);
+  transition-delay: -0.2s;
+}
+.loader .loader__tile:nth-child(1) {
+  top: calc(0 * 20%);
+  transition-delay: 0s;
+}
+.loader .loader__tile:nth-child(2) {
+  top: calc(1 * 20%);
+  transition-delay: 0.2s;
+}
+.loader .loader__tile:nth-child(3) {
+  top: calc(2 * 20%);
+  transition-delay: 0.4s;
+}
+.loader .loader__tile:nth-child(4) {
+  top: calc(3 * 20%);
+  transition-delay: 0.6s;
+}
+.loader .loader__tile:nth-child(5) {
+  top: calc(4 * 20%);
+  transition-delay: 0.8s;
+}
+.loader--active {
+  width: 100%;
+  transition-delay: 0s;
+}
+.loader--active .loader__icon {
+  opacity: 1;
+  transition: opacity .5s 1.4s ease;
+}
+.loader--active .loader__tile {
+  width: 100%;
+}
+.loader--active .loader__tile:nth-child(0) {
+  transition-delay: -0.2s;
+}
+.loader--active .loader__tile:nth-child(1) {
+  transition-delay: 0s;
+}
+.loader--active .loader__tile:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.loader--active .loader__tile:nth-child(3) {
+  transition-delay: 0.4s;
+}
+.loader--active .loader__tile:nth-child(4) {
+  transition-delay: 0.6s;
+}
+.loader--active .loader__tile:nth-child(5) {
+  transition-delay: 0.8s;
+}
+.form-inline{
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 0px;
+}
+.form-inline button{
+  color: white;
+ 
+}
 .Home{
+  margin: 10px 0px;
   height:50%;
   display:flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  background-color:white;
+  padding: 50px;
   width:70%;
-  border: solid black 5px;
+  /* border: solid rgba(0,0,0,0.2) 3px; */
+  border-radius: 50px;
+  margin: 20px;
+  /* background: rgba(0,0,0,0.2); */
 }
 .centerclass{
   left:20%;
@@ -84,7 +223,22 @@
 .searchButton{
   margin:0 auto;
 }
+
 </style>
 <script>
+</script>
+
+<script> 
+  var $loader = document.querySelector('.loader')
+window.onload = function() {
+  $loader.classList.remove('loader--active')
+};
+document.querySelector('.btn').addEventListener('click', function () {
+  $loader.classList.add('loader--active')
+  
+  window.setTimeout(function () {
+    $loader.classList.remove('loader--active')
+  }, 5000)
+})
 </script>
 {% endblock %}

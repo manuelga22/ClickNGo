@@ -22,7 +22,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-              <span class="navbar-brand mb-0 h1 ">SparkDev</span>
+             <!-- <span class="navbar-brand mb-0 h1 ">SparkDev</span> -->
+             <a class = "navbar-brand" href="">
+               <img src="/media/logo.png" alt="logo" style = "width:40px;">
+             </a>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'front_page' %}">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -51,7 +54,6 @@
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="nav-link dropdown-item" href="{% url 'profile_settings:profile_page' %}">Profile</a> 
-                    <a class="nav-link dropdown-item" href="#">Post a Question!</a>
                     <a class="nav-link dropdown-item" href="{% url 'Communities:all_communities' %}" >View Communities</a>
                     <a class="nav-link dropdown-item" href="{% url 'Question:createQuestion' %}">Post a Question!</a>
                     <a class="nav-link dropdown-item" href="{% url 'Question:allQuestions' %}">See All Questions</a>
@@ -107,26 +109,29 @@
   }
   footer {   
     top:20%; 
+
+    /* footer{   
+    /* top:20%; 
     clear: both;
     position: relative;
     height: 200px;
     margin-top: -150px;
-    margin-bottom: 0px !important;
- /* background-color:lightcyan; */
-    border: solid white 5px;
-    padding: 0px !important;
-    background: black;
+    margin-bottom: 0px !important; */
+    opacity: 1; 
+    background-color: rgba(0,0,0,0.6); 
     color:white;
-  }
+    }
     main{
+      background: rgb(122,2,113);
+      background: linear-gradient(158deg, rgba(122,2,113,1) 8%, rgba(255,192,76,1) 71%);
       height:100%;
       display:flex;
-      flex-direction: column;
+     
       align-items: center;
       justify-content: center;
-      /* background-image: url('/static/background2Orange.jpg');
-      background-color: white; */
-      /* background-repeat: no-repeat; */
+      
+  
+      background-repeat: no-repeat;
       background-size: cover;
       margin: 0px !important;
     }
@@ -164,7 +169,6 @@
    .dropdownMenu{
      width:15vw;
    }
-
   </style>
 
 </html>

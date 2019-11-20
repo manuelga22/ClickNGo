@@ -4,7 +4,8 @@ from django.http import HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-from .models import Profile 
+from .models import Profile
+from Questions.models import Question
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -48,8 +49,8 @@ def resetPassword(request,pk):
        form= ResetPasswordForm(request.POST, instance= userObj)
        if form.data['password']==form.data['passwordCheck']:#check if passwords matched
         if form.is_valid():
-           form.save()
            if(len(form.data['password']) >8 and not(form.data['password'].isdigit())  ):#conditions for the new passwords
+              form.save()
               userObj.set_password(form.data['password'])
               userObj.save()
               messages.success(request,"changed password succesfully")
@@ -71,7 +72,12 @@ def resetPassword(request,pk):
 @login_required
 def displayProfile(request):
     profile = Profile.objects.get(User = request.user)
-    return render(request, 'Users/profile.html', {'profile': profile})
+    # userQuestions = get_object_or_404(Question, User = User_id)
+    return render(request, 'Users/Question.html', {
+      'profile': profile, 
+   
+    })
+
 
 
 @login_required 
