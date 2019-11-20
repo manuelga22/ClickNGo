@@ -10,4 +10,5 @@ urlpatterns = [
     path('createQuestion/', views.createQuestion, name='createQuestion'),
     path('questions/', views.allQuestions, name='allQuestions'),
     path('<str:title>', views.questionDetail, name='questionDetail'),
+   
 ]

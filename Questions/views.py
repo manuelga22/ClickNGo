@@ -20,7 +20,10 @@ class SearchResultsView(ListView):
             Q(Question__icontains=query) | Q(Description__icontains=query)
         )
         return object_list
+
 # Create your views here.
+
+
 @login_required
 def createQuestion(request):
     user = get_object_or_404(Profile, User=request.user)
