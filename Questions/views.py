@@ -7,7 +7,6 @@ from .models import Question, Response
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 
-
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
@@ -43,26 +42,23 @@ def allQuestions(request):
     return render(request, 'Questions/allQuestions.html', {'Question': Questions})
 
 def questionDetail(request, title):
-    #user = get_object_or_404(Profile, User=request.user)
-    #response = Response.objects.all()
-    try:
-        question = get_object_or_404(Question, Question=title)
-    except Question.DoesNotExist:
-        question = None
-
-
-
-    
-    if request.method =='POST':
-        form = CreateResponseForm(request.POST)
-        if form.is_valid():
-            Response = form.save(commit=False)
-            Response.Question = question
-            Response.User = user
-            Response.save()
-            return HttpResponseRedirect(request.path_info)
+    question = get_object_or_404(Question, Question=title)
+    r = Response.objects.filter(Question__Question=title)
+    print(r)
+    if request.user.is_authenticated:
+        user = get_object_or_404(Profile, User=request.user)
+        if request.method =='POST': 
+            form = CreateResponseForm(request.POST)
+            if form.is_valid():
+                response = form.save(commit=False)
+                response.Question = question
+                response.User = user
+                response.save()
+                return HttpResponseRedirect(request.path_info)
+        else:
+            form = CreateResponseForm()
+            context = {'form': form, 'Question': question, 'Response': r,'ResponseLength':r.count()}
+            return render(request, 'Questions/question_details.html', context)  
     else:
-        form = CreateResponseForm()
-        context = {'form': form, 'Question': question}
+        context = {'Question': question, 'Response': r}
         return render(request, 'Questions/question_details.html', context)
-

@@ -20,5 +20,4 @@ urlpatterns = [
     path('resetPassword/<int:pk>/', views.resetPassword, name="reset_Password"),
     # social auth
     url('^api/v1/', include('social_django.urls', namespace='social'))
-
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

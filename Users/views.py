@@ -80,7 +80,6 @@ def displayProfile(request):
     })
 
 
-
 @login_required 
 def accountSettings(request):
     if request.method == 'POST':

@@ -30,12 +30,10 @@
               <a class="nav-link" href="{% url 'front_page' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             {% if user.is_authenticated %}  
-            <li class="nav-item dropdown dmenu">          
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Settings
-            </a>
-            <div class="dropdown-menu sm-menu">
-              {% if user.is_superuser %}
+                   
+            
+          
+            {% if user.is_superuser %}
               <a class="dropdown-item" href="/admin/">Admin</a>
               {% endif %}
             {% else %}
@@ -43,109 +41,88 @@
               <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only"></span></a>
             </li>
             {% endif %}
-            </div>
-          </li>
+       
+   
           </ul>
-          <!--<<<<<<<<<<DropDown>>>>>> -->
+        
             {% if user.is_authenticated %}
               
                   <button class="btn btn-secondary dropdown-toggle dropdownMenu" id="sidebar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      {{user.username}}<span class="sr-only"></span>
-                  </button>
+                    <img src="{{profile.profilePic.url}}" class="img-responsive avatar " alt="profile-avatar"> 
+                    {{user.username}}<span class="sr-only"></span>
+                  
+                 </button>
                 
            {% endif %}
-          <!--<<<<<<< End of Dropdown>>>>>> -->
+       
         </div>
       </nav>
+      {% if user.is_authenticated %}
+      <div class="side-bar-menu">
+          
+ 
+          <div class="profile-usermenu">
+            <ul class="navBase nav">	
+
+
+                <li><a class="nav-link dropdown-item" href="{% url 'profile_settings:profile_page' %}">Profile</a></li>
+               <li><a class="nav-link dropdown-item" href="{% url 'Communities:all_communities' %}" >View Communities</a></li>
+               <li><a class="nav-link dropdown-item" href="{% url 'Question:createQuestion' %}">Post a Question!</a></li>
+               <li><a class="nav-link dropdown-item" href="{% url 'Question:allQuestions' %}">See All Questions</a></li>
+               <li><a class="nav-link dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+
+              </li>
+          
+             
+            </ul>
+          </div>
+   </div>
+ 
+   {% endif %}
 
       <main role="main" style="margin-right: 30px; margin-left: 30px;">
-          {% if user.is_authenticated %}
-          <div class="side-bar-menu">
-              <!-- SIDEBAR USERPIC -->
-              <div class="profile-userpic">
-            
-                <img src="{{profile.profilePic.url}}" class="img-responsive profile-pic" alt="profile-avatar">
-              </div>
-              <!-- END SIDEBAR USERPIC -->
-              <!-- SIDEBAR USER TITLE -->
-              <div class="profile-usertitle">
-          
-                <div class="profile-usertitle-name">
-                  {{ user.username }}
-                </div>
-                <div class="profile-usertitle-job">
-                  Developer
-                </div>
-              </div>
-              <!-- END SIDEBAR USER TITLE -->
-              <!-- SIDEBAR MENU -->
-              <div class="profile-usermenu">
-                <ul class="navBase nav">	
-                  <li class="{% if 'Account' in request.resolver_match.url_name %} active {% endif %}">
-                    <a href="{% url 'profile_settings:account_settings'%}">
-                    <i class="glyphicon glyphicon-user"></i>
-                    Account Settings </a>
-
-
-
-                    <li><a class="nav-link dropdown-item" href="{% url 'profile_settings:profile_page' %}">Profile</a></li>
-                    <li><a class="nav-link dropdown-item" href="{% url 'Communities:all_communities' %}" >View Communities</a></li>
-                    <li><a class="nav-link dropdown-item" href="{% url 'Question:createQuestion' %}">Post a Question!</a></li>
-                   <li><a class="nav-link dropdown-item" href="{% url 'Question:allQuestions' %}">See All Questions</a></li>
-                   <li><a class="nav-link dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-
-                  </li>
-              
-                 
-                </ul>
-              </div>
-       </div>
-
-      
-      
-    
-      
-      
-     
-       {% endif %}
+         
 
 
         {% block body %} {% endblock %}
+
+    
+        
+
       </main>
-
-
+<!-- <<<<<<<<<<footer>>>>>> -->
+      <footer class="page-footer font-small blue pt-4">
+          <div class="container-fluid text-center text-md-left">
+            <div class="row">
+              <div class="col-md-6 mt-md-0 mt-3">
+                <h5 class="text-uppercase">Sparkdev Web Development Project 2019</h5>
+                <p>Spardev Overflow</p>
+              </div>
+              <hr class="clearfix w-100 d-md-none pb-3">
+              <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">Links</h5>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!">Link 1</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">Links</h5> 
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!">Link 1</a>
+                  </li>    
+                </ul>
+              </div>
+            </div> 
+          </div>  
+        </footer>
  
    
 
 </body>
-<!-- <<<<<<<<<<footer>>>>>> -->
-<footer class="page-footer font-small blue pt-4">
-    <div class="container-fluid text-center text-md-left">
-      <div class="row">
-        <div class="col-md-6 mt-md-0 mt-3">
-          <h5 class="text-uppercase">Sparkdev Web Development Project 2019</h5>
-          <p>Spardev Overflow</p>
-        </div>
-        <hr class="clearfix w-100 d-md-none pb-3">
-        <div class="col-md-3 mb-md-0 mb-3">
-          <h5 class="text-uppercase">Links</h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-3 mb-md-0 mb-3">
-          <h5 class="text-uppercase">Links</h5> 
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>    
-          </ul>
-        </div>
-      </div> 
-    </div>  
-  </footer>
+
 
 <script>
   $( "#sidebar" ).click(function() {
@@ -157,6 +134,12 @@
   .profile-pic{
     width:200px;
     height:100px;
+  }
+  .avatar{
+    width: 12%;
+    float: left;
+    /* height: 5%; */
+    border: solid black 2px;
   }
      .side-bar-menu{
       position: absolute;
@@ -185,13 +168,16 @@
   .navBase{
     flex-direction: column;
   }
-    footer {   
-    /* top:20%; 
-    clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -150px;
-    margin-bottom: 0px !important; */
+     
+  .ResponseContainer{
+    width:65%;
+    height:75%;
+    background-color:white;
+    border: solid black 5px;
+    text-align:center;
+  }
+  footer {   
+    top:20%; 
     opacity: 1; 
     background-color: rgba(0,0,0,0.6); 
     color:white;
@@ -199,16 +185,18 @@
     main{
       background: rgb(122,2,113);
       background: linear-gradient(158deg, rgba(122,2,113,1) 8%, rgba(255,192,76,1) 71%);
-      height:100%;
+      min-height:90vh;
+      height: max-content;
       display:flex;
      
       align-items: center;
       justify-content: center;
-      
-  
+
       background-repeat: no-repeat;
       background-size: cover;
-      margin: 0px !important;
+      margin:  0px !important;
+    
+  
     }
    .nav-color{
         background-color: black;
@@ -226,6 +214,11 @@
     html, body{
     height: 90vh;
    }
+   main{
+   background: rgb(122,2,113);
+   background: linear-gradient(158deg, rgba(122,2,113,1) 8%, rgba(255,192,76,1) 71%);
+}
+   
    .resultsContainer{
     width:75vw;
     height:100%;

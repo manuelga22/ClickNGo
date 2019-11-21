@@ -27,26 +27,9 @@
 
 
   <h1 class="title">SparkDev Overflow</h1>
-    <!-- <div class="form-group has-search search">
-        <div class="btn-group btn-group-toggle centerclass" data-toggle="buttons">
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="option1" autocomplete="off" > Math
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="option2" autocomplete="off"> Programming
-            </label>
-            <label class="btn btn-secondary">
-              <input type="radio" name="options" id="option3" autocomplete="off"> Physics
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option4" autocomplete="off"> Chemistry
-              </label>
-              <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option5" autocomplete="off"> English
-              </label>
-          </div> -->
+ 
       <form class="form-inline" action="{% url 'Question:search_results' %}" method="get">
-          <input class="form-control mr-sm-2 search " type="search" placeholder="Search" aria-label="Search">
+          <input name="q" class="form-control mr-sm-2 search " type="text" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-warning my-2 my-sm-0 searchButton" type="submit">Search Questions</button>
       </form>
     </div>
@@ -88,12 +71,13 @@
 <style>
 
 .big-logo{
-  height: 100%;
-  width: 200px;
+
+  width: 300px;
   margin: none;
   border-radius: 50px;
 }
 body {
+ 
   background-color: #eee;
 }
 .wrapper {
@@ -226,9 +210,9 @@ body {
 .searchButton{
   margin:0 auto;
 }
+
 </style>
 <script>
-  $('.toast').toast(option)
 </script>
 
 <script> 
@@ -236,12 +220,6 @@ body {
 window.onload = function() {
   $loader.classList.remove('loader--active')
 };
-document.querySelector('.btn').addEventListener('click', function () {
-  $loader.classList.add('loader--active')
-  
-  window.setTimeout(function () {
-    $loader.classList.remove('loader--active')
-  }, 5000)
-})
+
 </script>
 {% endblock %}
