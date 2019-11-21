@@ -48,26 +48,73 @@
           </ul>
           <!--<<<<<<<<<<DropDown>>>>>> -->
             {% if user.is_authenticated %}
-              <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle dropdownMenu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              
+                  <button class="btn btn-secondary dropdown-toggle dropdownMenu" id="sidebar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       {{user.username}}<span class="sr-only"></span>
                   </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="nav-link dropdown-item" href="{% url 'profile_settings:profile_page' %}">Profile</a> 
-                    <a class="nav-link dropdown-item" href="{% url 'Communities:all_communities' %}" >View Communities</a>
-                    <a class="nav-link dropdown-item" href="{% url 'Question:createQuestion' %}">Post a Question!</a>
-                    <a class="nav-link dropdown-item" href="{% url 'Question:allQuestions' %}">See All Questions</a>
-                    <a class="nav-link dropdown-item" href="{% url 'logout' %}">Logout</a>
-                  </div>
-                </div>
+                
            {% endif %}
           <!--<<<<<<< End of Dropdown>>>>>> -->
         </div>
       </nav>
 
       <main role="main" style="margin-right: 30px; margin-left: 30px;">
+          {% if user.is_authenticated %}
+          <div class="side-bar-menu">
+              <!-- SIDEBAR USERPIC -->
+              <div class="profile-userpic">
+            
+                <img src="{{profile.profilePic.url}}" class="img-responsive profile-pic" alt="profile-avatar">
+              </div>
+              <!-- END SIDEBAR USERPIC -->
+              <!-- SIDEBAR USER TITLE -->
+              <div class="profile-usertitle">
+          
+                <div class="profile-usertitle-name">
+                  {{ user.username }}
+                </div>
+                <div class="profile-usertitle-job">
+                  Developer
+                </div>
+              </div>
+              <!-- END SIDEBAR USER TITLE -->
+              <!-- SIDEBAR MENU -->
+              <div class="profile-usermenu">
+                <ul class="navBase nav">	
+                  <li class="{% if 'Account' in request.resolver_match.url_name %} active {% endif %}">
+                    <a href="{% url 'profile_settings:account_settings'%}">
+                    <i class="glyphicon glyphicon-user"></i>
+                    Account Settings </a>
+
+
+
+                    <li><a class="nav-link dropdown-item" href="{% url 'profile_settings:profile_page' %}">Profile</a></li>
+                    <li><a class="nav-link dropdown-item" href="{% url 'Communities:all_communities' %}" >View Communities</a></li>
+                    <li><a class="nav-link dropdown-item" href="{% url 'Question:createQuestion' %}">Post a Question!</a></li>
+                   <li><a class="nav-link dropdown-item" href="{% url 'Question:allQuestions' %}">See All Questions</a></li>
+                   <li><a class="nav-link dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+
+                  </li>
+              
+                 
+                </ul>
+              </div>
+       </div>
+
+      
+      
+    
+      
+      
+     
+       {% endif %}
+
+
         {% block body %} {% endblock %}
       </main>
+
+
+ 
    
 
 </body>
@@ -99,8 +146,45 @@
       </div> 
     </div>  
   </footer>
-<style>
 
+<script>
+  $( "#sidebar" ).click(function() {
+    $( ".side-bar-menu" ).toggle();
+});
+</script>
+
+<style>
+  .profile-pic{
+    width:200px;
+    height:100px;
+  }
+     .side-bar-menu{
+      position: absolute;
+    top: 65px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,0.2);
+    border:solid white 2px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 3px; 
+    color:white;
+  }
+
+
+  .side-bar-menu div{
+    
+    margin: 10px;
+    text-align:center;
+  }
+  .side-bar-menu div a{
+    color:white;
+  }
+
+  .navBase{
+    flex-direction: column;
+  }
     footer {   
     /* top:20%; 
     clear: both;

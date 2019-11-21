@@ -34,7 +34,7 @@ Licensed under MIT
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
-					<ul class="nav">	
+					<ul class="nav navProfile">	
 						<li class="{% if 'Account' in request.resolver_match.url_name %} active {% endif %}">
 							<a href="{% url 'profile_settings:account_settings'%}">
 							<i class="glyphicon glyphicon-user"></i>
@@ -89,8 +89,8 @@ Licensed under MIT
      border:solid #FFC04C 3px;
 		 
     }
-		.nav{
-  justify-content: center;
+		.navProfile{
+  justify-content: center ;
 }
 		.modal-backdrop{
 			z-index:-1;

@@ -72,10 +72,11 @@ def resetPassword(request,pk):
 @login_required
 def displayProfile(request):
     profile = Profile.objects.get(User = request.user)
+    UserQuestions = Question.objects.get(User=profile)
     # userQuestions = get_object_or_404(Question, User = User_id)
     return render(request, 'Users/Question.html', {
-      'profile': profile, 
-   
+      'profile': profile,
+      'questions': UserQuestions.Question, 
     })
 
 

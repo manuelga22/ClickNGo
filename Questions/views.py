@@ -17,7 +17,7 @@ class SearchResultsView(ListView):
     def get_queryset(self): # new
         query = self.request.GET.get('q')
         object_list = Question.objects.filter(
-            Q(Question__icontains=query) | Q(Description__icontains=query)
+            Q(Question__icontains=query) | Q(Description__icontains=query) | Q(Subject__icontains=query)
         )
         return object_list
 
@@ -49,6 +49,8 @@ def questionDetail(request, title):
         question = get_object_or_404(Question, Question=title)
     except Question.DoesNotExist:
         question = None
+
+
 
     
     if request.method =='POST':
