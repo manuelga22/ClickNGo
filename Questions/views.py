@@ -42,23 +42,23 @@ def allQuestions(request):
     return render(request, 'Questions/allQuestions.html', {'Question': Questions})
 
 def questionDetail(request, title):
-    question = get_object_or_404(Question, Question=title)
-    r = Response.objects.filter(Question__Question=title)
-    print(r)
-    if request.user.is_authenticated:
-        user = get_object_or_404(Profile, User=request.user)
-        if request.method =='POST': 
-            form = CreateResponseForm(request.POST)
-            if form.is_valid():
-                response = form.save(commit=False)
-                response.Question = question
-                response.User = user
-                response.save()
-                return HttpResponseRedirect(request.path_info)
-        else:
-            form = CreateResponseForm()
-            context = {'form': form, 'Question': question, 'Response': r,'ResponseLength':r.count()}
-            return render(request, 'Questions/question_details.html', context)  
-    else:
-        context = {'Question': question, 'Response': r}
-        return render(request, 'Questions/question_details.html', context)
+  newTitle = title
+  question = get_object_or_404(Question, Question=title)
+  r = Response.objects.filter(Question__Question=title)
+  if request.user.is_authenticated:
+       user = get_object_or_404(Profile, User=request.user)
+       if request.method == "POST":
+           form = CreateResponseForm(request.POST)
+           if form.is_valid():
+             response = form.save(commit=False)
+             response.Question = question
+             response.User = user
+             response.save()
+             return redirect(question)
+       else:
+           form = CreateResponseForm()
+           context = {'form': form, 'Question': question, 'Response': r,'ResponseLength':r.count()}
+           return render(request, 'Questions/question_details.html', context) 
+  else:
+       context = {'Question': question, 'Response': r}
+       return render(request, 'Questions/question_details.html', context)

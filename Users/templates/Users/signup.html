@@ -20,11 +20,11 @@
            <div class="col-md-5 mx-auto">
              <div id="first">
                  <div class="myform form Sign-upForm ">
-                          <div class="logo mb-3">
-                             <div class="col-md-20 text-center">
-                                <h1 >Signup</h1>
-                             </div>
-                          </div>
+                     <div class="logo mb-3">
+                           <div class="col-md-12 text-center">
+                             <h1>Sign-up</h1>
+                           </div>
+                       </div>
                           <form method="POST" name="newUser">
                               {% csrf_token %}
                               {{form| crispy }}

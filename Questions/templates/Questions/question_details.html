@@ -10,10 +10,10 @@
     <!-- its recognizing it as an image but broken -->      
     {% if Question.User.profilePic %}
         <img class="img" src="{{ Question.User.profilePic.url }}" width="75" height="75"><br>
-        {{Question.User}}
+        {{Question.User}}?
         {{Question.Created_on}}
     {% else %}         
-        {{Question.User}}
+        {{Question.User}}?
         {{Question.Created_on}}
     {% endif %}
 
@@ -40,7 +40,7 @@
         <form class="createForm" method="POST" name= "createResponse">
             {% csrf_token %}
             {{form| crispy }}
-            <input type="submit" class = "btn" value="Submit">
+            <button type="submit" class = "btn" >Submit</button>
         </form>
         {% else %}
         <h5><a href="{% url 'login' %}">Log-in</a>  to post a reply</h5>
