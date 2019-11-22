@@ -22,15 +22,20 @@
         <b>{{Question.Question}}</b>
         <div class="questionPreview">
             {{Question.Description}}
+          
         </div>
     </div>  
     <hr>
     <h5 style="color:white">{{ResponseLength}} Answers</h5>
     <!-- Responses to question if any-->
         {% for r in Response %}
-        <div class="QCard">
+        <div id= "{{r.pk}}" class="QCard">
             <b>{{r.User}}</b><br>
-            {{r.Response}}
+           
+            <p class="response"> {{r.Response}}</p>
+            {% if r.User.User.username == user.username%}
+            <button class="btn edit-response">edit</button>
+            {% endif %}
         </div>
         {% endfor %}
     <br>
@@ -47,4 +52,39 @@
     {% endif %}
  
 </div>
+
+<style>
+
+</style>
+<script>
+   function divClicked(ele) {
+    let divHtml = $(ele).parent().find('p').html().trim();
+    let pk = $(ele).parent()[0].id
+    let url= "{% url 'Question:update_reply' title=Question.Question  pk=1234 %}"
+    let url2 = url.replace('1234',pk)
+    let editableText = $(`
+    <form method="POST" name = 'update-reply' action="${url2}">
+    {% csrf_token %}
+    <textarea name="newReply" class = '' value='${divHtml}'/>
+    <button onClick = "submit(${divHtml})" class="btn submit">Submit</button>
+    </form>
+
+    `);
+    $('.edit-response').hide();
+    editableText.val(divHtml);
+    $(ele).parent().find('p').replaceWith(editableText);
+   
+    editableText.blur(function() {
+     $('.submit').replaceWith($('<p>').html($(ele).val()));
+     $('.edit-response').show()
+    });
+   }
+
+   $(document).ready(function() {
+    $(".edit-response").click(function() {
+        divClicked(this);
+    });
+ });
+        
+</script>
 {% endblock %}

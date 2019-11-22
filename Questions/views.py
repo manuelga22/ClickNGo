@@ -6,6 +6,8 @@ from Users.models import Profile
 from .models import Question, Response
 from django.db.models import Q
 from django.http import HttpResponseRedirect
+import json
+
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
@@ -18,7 +20,7 @@ class SearchResultsView(ListView):
         object_list = Question.objects.filter(
             Q(Question__icontains=query) | Q(Description__icontains=query) | Q(Subject__icontains=query)
         )
-        return object_list
+        return object_list  
 
 # Create your views here.
 
@@ -48,8 +50,7 @@ def allQuestions(request):
 
 def questionDetail(request, title):
   question = get_object_or_404(Question, Question=title)
-  r = Response.objects.filter(Question__Question=title)
-       
+  r = Response.objects.filter(Question__Question=title)  
   if request.user.is_authenticated:
        profile = Profile.objects.get(User=request.user)
        user = get_object_or_404(Profile, User=request.user)
@@ -68,3 +69,18 @@ def questionDetail(request, title):
   else:
        context = {'Question': question, 'Response': r,'ResponseLength':r.count()}
        return render(request, 'Questions/question_details.html', context)
+
+def editReply(request,title,pk):
+    question = get_object_or_404(Question, Question=title)
+    r = Response.objects.filter(Question__Question=title)
+    if request.method=="POST":
+         print("here>>>")
+         answer= Response.objects.get(pk=pk)
+         print(answer.Response)
+         answer.Response= request.POST.get('newReply')
+         answer.save()
+         return  redirect(question)
+    else:
+       context = {'Question': question, 'Response': r,'ResponseLength':r.count()}
+       return render(request, 'Questions/question_details.html', context)
+
