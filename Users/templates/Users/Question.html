@@ -5,16 +5,34 @@
     <div class="row">
       <div class="col-md-12">
          <h5>My Questions</h5>
-         {%if questions %}
-        
-          <a>{{ questions }}</a>
-          
+         {% if questionCount > 0 %}
+          <div class="flexBox">
+          {% for questions in questions %}
+          <a href= "{% url 'Question:questionDetail' questions %}">{{ questions }}</a>
+          {% endfor %}
+          {% else %}
+          <h5>No questions found</h5>
+      
          {% endif %}
+        </div>
       </div>
 
     </div>
   </div>
 </div>
 
+<Style>
+    .flexBox{
+      display:flex;
+      flex-direction:column;
+      margin: 10px;
+    }
+    
+  .flexBox a {
+    margin: 10px;
+  }
+    </Style>
+
 {% endblock %}
+
  

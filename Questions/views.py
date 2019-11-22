@@ -7,6 +7,9 @@ from .models import Question, Response
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 import json
+import urllib
+from django.conf import settings
+import Users.views
 
 
 class HomePageView(TemplateView):
@@ -33,9 +36,28 @@ def createQuestion(request):
         form = CreateQuestionForm(request.POST)
         if form.is_valid():
             Question = form.save(commit=False)
-            Question.User = user
-            Question.save()
-            return redirect('front_page')
+            # Begin reCAPTCHA validation 
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            data = urllib.parse.urlencode(values).encode()
+            req =  urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+
+            if result['success']:
+                #form.save()
+                #messages.success(request, 'New comment added with success!')
+                Question.User = user
+                Question.save()
+                return redirect('profile_settings:profile_page')
+
+        #   '''  Question.User = user
+        #     Question.save()'''
+            
     else:
         profile = Profile.objects.get(User=request.user)
         form = CreateQuestionForm()
