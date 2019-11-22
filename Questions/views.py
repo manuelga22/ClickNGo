@@ -27,6 +27,7 @@ class SearchResultsView(ListView):
 def createQuestion(request):
     user = get_object_or_404(Profile, User=request.user)
     if request.method == 'POST':
+       
         form = CreateQuestionForm(request.POST)
         if form.is_valid():
             Question = form.save(commit=False)
@@ -34,18 +35,23 @@ def createQuestion(request):
             Question.save()
             return redirect('front_page')
     else:
+        profile = Profile.objects.get(User=request.user)
         form = CreateQuestionForm()
-        return render(request, 'Questions/createQuestion.html', {'form': form})
+        return render(request, 'Questions/createQuestion.html', {'form': form,'profile':profile})
 
 def allQuestions(request):
     Questions = Question.objects.all()
+    if request.user.is_authenticated:
+     profile = Profile.objects.get(User=request.user)
+     return render(request, 'Questions/allQuestions.html', {'Question': Questions,'profile':profile})
     return render(request, 'Questions/allQuestions.html', {'Question': Questions})
 
 def questionDetail(request, title):
-  newTitle = title
   question = get_object_or_404(Question, Question=title)
   r = Response.objects.filter(Question__Question=title)
+       
   if request.user.is_authenticated:
+       profile = Profile.objects.get(User=request.user)
        user = get_object_or_404(Profile, User=request.user)
        if request.method == "POST":
            form = CreateResponseForm(request.POST)
@@ -57,8 +63,8 @@ def questionDetail(request, title):
              return redirect(question)
        else:
            form = CreateResponseForm()
-           context = {'form': form, 'Question': question, 'Response': r,'ResponseLength':r.count()}
+           context = {'form': form, 'Question': question, 'Response': r,'ResponseLength':r.count(),'profile':profile}
            return render(request, 'Questions/question_details.html', context) 
   else:
-       context = {'Question': question, 'Response': r}
+       context = {'Question': question, 'Response': r,'ResponseLength':r.count()}
        return render(request, 'Questions/question_details.html', context)

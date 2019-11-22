@@ -10,7 +10,7 @@
     <!-- its recognizing it as an image but broken -->      
     {% if Question.User.profilePic %}
         <img class="img" src="{{ Question.User.profilePic.url }}" width="75" height="75"><br>
-        {{Question.User}}?
+        {{Question.User}}
         {{Question.Created_on}}
     {% else %}         
         {{Question.User}}?
