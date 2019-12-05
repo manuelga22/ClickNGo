@@ -5,15 +5,21 @@
 {% load static %} 
 <link rel="stylesheet" href="{% static 'css/createQ.css' %}">
 
-<div class=" shadow-lg p-3 mb-5 rounded createQContainer shadow-lg">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+<div class=" shadow-lg p-3 mb-5 rounded  QContainer">
     <h1> Ask a Question </h1>
 
+
+   
     <form class="createForm" method="POST" name= "createQuestion">
         {% csrf_token %}
 
         {{form| crispy }}
-
+        <div class="g-recaptcha" data-sitekey="6Lc4DsQUAAAAAMLxe07vQilqTWYPFP6p0t56zXEx"></div>
         <input class="btn btn-info"type="submit" value="Submit">
+       
     </form>
 
     {% endblock %}

@@ -1,36 +1,43 @@
 .allContainer{
-  width:65%;
-  height:75%;
-  background-color:white;
-  border: solid black 5px;
-  text-align:center;
-  overflow: scroll;
+  width: 85%;
+
+  background: rgba(0,0,0,0.2);
+ 
+  border-radius: 50px;
+  padding: 2%;
+  margin: 50px 0px;
+
+  max-height:1000px;
+  overflow-y: auto;
+
 }
+
 .allContainer a:hover{
   text-decoration: none;
 }
 
 .QCard{
-  margin:auto;
-  height: 15%;
-  width: 95%;
+  padding: 1%;
+  width: 100%;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.35);
+  background: rgba(255,255,255,0.4);
   margin-top: 15px;
-  color:black;
+  color: black;
   text-decoration: none;
 }
 
 .questionPreview{
-  margin:auto;
-  text-align:center;
-  width:80%;
-  height:60%;
+  margin: auto;
   overflow: hidden;
 }
 
 .createForm{
-  width:60%; 
+  width:95%; 
+  background: rgba(0,0,0,0.3);
+  border-radius: 20px;
+  padding: 30px;
   margin:auto;
+  color:white;
 }
 
   .img {

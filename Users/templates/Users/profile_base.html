@@ -34,7 +34,7 @@ Licensed under MIT
 				<!-- END SIDEBAR USER TITLE -->
 				<!-- SIDEBAR MENU -->
 				<div class="profile-usermenu">
-					<ul class="nav">	
+					<ul class="nav navProfile">	
 						<li class="{% if 'Account' in request.resolver_match.url_name %} active {% endif %}">
 							<a href="{% url 'profile_settings:account_settings'%}">
 							<i class="glyphicon glyphicon-user"></i>
@@ -43,7 +43,7 @@ Licensed under MIT
 				
 						<li>
 					
-						<button type="button" class="btn bg-danger text-light text-center" data-toggle="modal" data-target="#deleteModal">
+						<button type="button" class="btn bg-danger text-light text-center delete-btn" data-toggle="modal" data-target="#deleteModal">
 						Delete Account </button>
 			
 						</li>
@@ -85,12 +85,18 @@ Licensed under MIT
 </div>
 
    <style>
+		 .delete-btn{
+			 margin: 10px;
+		 }
+		 .profile-usermenu {
+    margin-top:0px !important;
+}
    .AccountSetting{
      border:solid #FFC04C 3px;
 		 
     }
-		.nav{
-  justify-content: center;
+		.navProfile{
+  justify-content: center ;
 }
 		.modal-backdrop{
 			z-index:-1;

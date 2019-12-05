@@ -78,11 +78,11 @@ body {
     border-bottom: none;
   }
   
-  .profile-usermenu ul li a {
+  /* .profile-usermenu ul li a {
     color: #93a3b5;
     font-size: 14px;
     font-weight: 400;
-  }
+  } */
   
   .profile-usermenu ul li a i {
     margin-right: 8px;

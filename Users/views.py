@@ -20,7 +20,7 @@ def signup(request):
         if newUser.is_valid():
             newUser.save()
             user = User.objects.get(username = newUser.cleaned_data['username'])  #get instance to save a profile
-            Profile.objects.create_Profile(user, '/defaultAvatar.png')
+            Profile.objects.create_Profile(user, 'defaultAvatar.png')
             return redirect ('login') 
         else:
             messages.warning(request, 'Could not create profile')
@@ -72,12 +72,14 @@ def resetPassword(request,pk):
 @login_required
 def displayProfile(request):
     profile = Profile.objects.get(User = request.user)
+    UserQuestions = Question.objects.filter(User=profile)
+    print(UserQuestions)
     # userQuestions = get_object_or_404(Question, User = User_id)
     return render(request, 'Users/Question.html', {
-      'profile': profile, 
-   
+      'profile': profile,
+      'questions': UserQuestions, 
+      'questionCount': UserQuestions.count()
     })
-
 
 
 @login_required 

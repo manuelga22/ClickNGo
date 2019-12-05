@@ -30,12 +30,10 @@
               <a class="nav-link" href="{% url 'front_page' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             {% if user.is_authenticated %}  
-            <li class="nav-item dropdown dmenu">          
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Settings
-            </a>
-            <div class="dropdown-menu sm-menu">
-              {% if user.is_superuser %}
+                   
+            
+          
+            {% if user.is_superuser %}
               <a class="dropdown-item" href="/admin/">Admin</a>
               {% endif %}
             {% else %}
@@ -43,63 +41,134 @@
               <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only"></span></a>
             </li>
             {% endif %}
-            </div>
-          </li>
+       
+   
           </ul>
-          <!--<<<<<<<<<<DropDown>>>>>> -->
+        
             {% if user.is_authenticated %}
-              <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle dropdownMenu" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      {{user.username}}<span class="sr-only"></span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="nav-link dropdown-item" href="{% url 'profile_settings:profile_page' %}">Profile</a> 
-                    <a class="nav-link dropdown-item" href="{% url 'Communities:all_communities' %}" >View Communities</a>
-                    <a class="nav-link dropdown-item" href="{% url 'Question:createQuestion' %}">Post a Question!</a>
-                    <a class="nav-link dropdown-item" href="{% url 'Question:allQuestions' %}">See All Questions</a>
-                    <a class="nav-link dropdown-item" href="{% url 'logout' %}">Logout</a>
-                  </div>
-                </div>
+              
+                  <button class="btn btn-secondary dropdown-toggle dropdownMenu" id="sidebar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{{profile.profilePic.url}}" class="img-responsive avatar " alt="profile-avatar"> 
+                    {{user.username}}<span class="sr-only"></span>
+                  
+                 </button>
+                
            {% endif %}
-          <!--<<<<<<< End of Dropdown>>>>>> -->
+       
         </div>
       </nav>
+      {% if user.is_authenticated %}
+      <div class="side-bar-menu">
+          
+ 
+          <div class="profile-usermenu">
+            <ul class="navBase nav">	
+
+
+                <li><a class="nav-link dropdown-item" href="{% url 'profile_settings:profile_page' %}">Profile</a></li>
+               <li><a class="nav-link dropdown-item" href="{% url 'Communities:all_communities' %}" >View Communities</a></li>
+               <li><a class="nav-link dropdown-item" href="{% url 'Question:createQuestion' %}">Post a Question!</a></li>
+               <li><a class="nav-link dropdown-item" href="{% url 'Question:allQuestions' %}">See All Questions</a></li>
+               <li><a class="nav-link dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+
+              </li>
+          
+             
+            </ul>
+          </div>
+   </div>
+ 
+   {% endif %}
 
       <main role="main" style="margin-right: 30px; margin-left: 30px;">
+         
+
+
         {% block body %} {% endblock %}
+
+    
+        
+
       </main>
+<!-- <<<<<<<<<<footer>>>>>> -->
+      <footer class="page-footer font-small blue pt-4">
+          <div class="container-fluid text-center text-md-left">
+            <div class="row">
+              <div class="col-md-6 mt-md-0 mt-3">
+                <h5 class="text-uppercase">Sparkdev Web Development Project 2019</h5>
+                <p>Spardev Overflow</p>
+              </div>
+              <hr class="clearfix w-100 d-md-none pb-3">
+              <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">Links</h5>
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!">Link 1</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase">Links</h5> 
+                <ul class="list-unstyled">
+                  <li>
+                    <a href="#!">Link 1</a>
+                  </li>    
+                </ul>
+              </div>
+            </div> 
+          </div>  
+        </footer>
+ 
    
 
 </body>
-<!-- <<<<<<<<<<footer>>>>>> -->
-<footer class="page-footer font-small blue pt-4">
-    <div class="container-fluid text-center text-md-left">
-      <div class="row">
-        <div class="col-md-6 mt-md-0 mt-3">
-          <h5 class="text-uppercase">Sparkdev Web Development Project 2019</h5>
-          <p>Spardev Overflow</p>
-        </div>
-        <hr class="clearfix w-100 d-md-none pb-3">
-        <div class="col-md-3 mb-md-0 mb-3">
-          <h5 class="text-uppercase">Links</h5>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-3 mb-md-0 mb-3">
-          <h5 class="text-uppercase">Links</h5> 
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>    
-          </ul>
-        </div>
-      </div> 
-    </div>  
-  </footer>
+
+
+<script>
+  $( "#sidebar" ).click(function() {
+    $( ".side-bar-menu" ).toggle();
+});
+</script>
+
 <style>
+  .profile-pic{
+    width:200px;
+    height:100px;
+  }
+  .avatar{
+    width: 12%;
+    float: left;
+    /* height: 5%; */
+    border: solid black 2px;
+  }
+     .side-bar-menu{
+      position: absolute;
+    top: 65px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,0.2);
+    border:solid white 2px;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 3px; 
+    color:white;
+  }
+
+
+  .side-bar-menu div{
+    
+    margin: 10px;
+    text-align:center;
+  }
+  .side-bar-menu div a{
+    color:white;
+  }
+
+  .navBase{
+    flex-direction: column;
+  }
+     
   .ResponseContainer{
     width:65%;
     height:75%;
@@ -109,14 +178,6 @@
   }
   footer {   
     top:20%; 
-
-    /* footer{   
-    /* top:20%; 
-    clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -150px;
-    margin-bottom: 0px !important; */
     opacity: 1; 
     background-color: rgba(0,0,0,0.6); 
     color:white;
@@ -124,16 +185,18 @@
     main{
       background: rgb(122,2,113);
       background: linear-gradient(158deg, rgba(122,2,113,1) 8%, rgba(255,192,76,1) 71%);
-      height:100%;
+      min-height:90vh;
+      height: max-content;
       display:flex;
      
       align-items: center;
       justify-content: center;
-      
-  
+
       background-repeat: no-repeat;
       background-size: cover;
-      margin: 0px !important;
+      margin:  0px !important;
+    
+  
     }
    .nav-color{
         background-color: black;

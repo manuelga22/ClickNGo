@@ -144,7 +144,7 @@ STATIC_URL = '/static/'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT= os.path.join(BASE_DIR,'media')
+MEDIA_ROOT= os.path.join(BASE_DIR,'')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -160,6 +160,8 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Lc4DsQUAAAAABoy8XuYlpWiXUfXDCUCKuGHTSVN'
 #465
 # LOGIN_URL = 'login'
 # LOGOUT_URL = 'logout'
