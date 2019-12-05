@@ -1,0 +1,23 @@
+{% extends "StorePage/_base.html" %}
+{% load crispy_forms_tags %}
+{% load static %} 
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/allQuestions.css' %}">
+
+<div class="allQsContainer">
+    <h1>Search Results</h1>
+
+        {% for questions in object_list %}
+            <a href= "{{ questions.get_absolute_url }}"> 
+                <div class="QCard">
+                    <b> {{questions.Question}} </b>
+                    <div class="questionPreview">
+                        {{questions.Description}}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+</div>
+
+{% endblock %}

@@ -41,4 +41,9 @@ $("#signup").click(function() {
                  }
                });
              });
-    
+             $('#updateModal').on('shown.bs.modal', function () {
+              $('#myInput').trigger('focus')
+            })
+            $('#deleteModal').on('shown.bs.modal', function () {
+              $('#myInput').trigger('focus')
+            })

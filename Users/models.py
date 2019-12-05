@@ -1,11 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import User
-#from PIL import Image FIXME: Add profile picutres
+
 
 # Create your models here.
+class ProfileManager(models.Manager):
+    def create_Profile(self, User,profilePic):
+        profile = self.create(User=User, profilePic=profilePic)
+        profile.save()
+        return profile
 class Profile(models.Model):
     User = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=16)
-    password = models.CharField(max_length=16)
-    #picture = models.ImageField()
+    profilePic = models.ImageField(null=True, upload_to='media')
+    objects = ProfileManager()
+    
+    def __str__(self):
+        return str(self.User)
+    
+
+
 

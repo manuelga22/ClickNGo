@@ -1,0 +1,97 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+        
+        
+</head>
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+<body>
+      <div class="container">
+          <div class="row">
+           <div class="col-md-5 mx-auto">
+             <div id="first">
+                 <div class="myform form Sign-upForm ">
+                     <div class="logo mb-3">
+                           <div class="col-md-12 text-center">
+                             <h1>Sign-up</h1>
+                           </div>
+                       </div>
+                          <form method="POST" name="newUser">
+                              {% csrf_token %}
+                              {{form| crispy }}
+                             <div class="col-md-12 text-center mb-3">
+                              <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Sign up</button>
+                             </div>
+                             <div class="col-md-12 ">
+                                <div class="form-group">
+                                   <p class="text-center">Already have an account?<a href="{% url 'login' %}" id="signin"> Sign in here.</a></p>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <div class="form-group">
+                                       <p class="text-center"><a href="{% url 'front_page' %}" id="front_page">Back to Home Page.</a></p>
+                                    </div>
+                             </div>
+                              </div>
+                          </form>
+                       </div>
+           </div>
+        </div>
+
+     <!-- messages -->
+     {% if messages %}
+            
+     <div>
+       <div class="alert  "  style="background:rgb(122,2,113);" role="alert">
+       
+            {% for message in messages %}
+           <p  {% if message.tags %}   class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+           {% endfor %}
+       
+       </div>
+    </div>
+ 
+    {% endif %}
+
+
+
+        </div>    
+  </body>
+  <style>
+      body{
+         background: rgb(122,2,113);
+         background: linear-gradient(158deg, rgba(122,2,113,1) 8%, rgba(255,192,76,1) 71%);
+      }
+      .Sign-upForm{
+         color:white;
+         border:solid #FFC04C 3px;
+         background:rgba(169,169,169, 0.6)
+      }
+      .socialOuth{
+         display:block;
+         text-align:center;
+         color:black;
+      }
+      .socialOuth, button {
+         background: #FFC04C !important;
+         border:none !important;
+      }
+      p, button, span,li{
+         color:white !important;
+      }
+      .text-muted{
+         color:white !important;
+      }
+      span{
+         background: none !important;
+      }
+      
+      </style>

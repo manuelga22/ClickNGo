@@ -1,0 +1,38 @@
+.allQsContainer{
+    width: 90%;
+    color: white;
+    
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 20px;
+    padding: 30px;
+    overflow-y: auto;
+  }
+.allQsContainer a:hover{
+    text-decoration: none;
+}
+
+.QCard{
+    padding:15px;
+    margin:auto;
+    height: 15%;
+    width: 95%;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.35);
+    background: rgba(255,255,255,0.4);
+    margin-top: 15px;
+    color:black;
+    text-decoration: none;
+
+}
+
+.QCard:hover{
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.8);
+}
+
+.questionPreview{
+    margin:auto;
+    
+}
+main{
+    padding: 2%;
+    align-items: unset !important;
+}
